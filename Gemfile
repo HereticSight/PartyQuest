@@ -14,14 +14,14 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'geocoder'
 gem 'react-rails'
 gem 'pg_search'
-
-
+gem 'paperclip'
+gem 'aws-sdk'
 
 group :development, :test do
   gem 'byebug'
   gem 'pry-rails'
   gem 'pry-byebug'
-  gem 'better-errors'
+  gem 'better_errors'
 end
 
 group :development do
