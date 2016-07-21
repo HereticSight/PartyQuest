@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160721204507) do
+ActiveRecord::Schema.define(version: 20160721220458) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,16 +55,22 @@ ActiveRecord::Schema.define(version: 20160721204507) do
   create_table "quests", force: :cascade do |t|
     t.string   "name",        limit: 64, null: false
     t.integer  "location_id",            null: false
-    t.integer  "activity_id",            null: false
     t.integer  "party_id",               null: false
     t.datetime "start_time",             null: false
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
 
-  add_index "quests", ["activity_id"], name: "index_quests_on_activity_id", using: :btree
   add_index "quests", ["location_id"], name: "index_quests_on_location_id", using: :btree
   add_index "quests", ["party_id"], name: "index_quests_on_party_id", using: :btree
+
+  create_table "table_activities_quests", force: :cascade do |t|
+    t.integer "activity_id", null: false
+    t.integer "quest_id",    null: false
+  end
+
+  add_index "table_activities_quests", ["activity_id"], name: "index_table_activities_quests_on_activity_id", using: :btree
+  add_index "table_activities_quests", ["quest_id"], name: "index_table_activities_quests_on_quest_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "username",        limit: 64, null: false
@@ -83,7 +89,8 @@ ActiveRecord::Schema.define(version: 20160721204507) do
   add_foreign_key "parties", "users"
   add_foreign_key "parties_users", "parties"
   add_foreign_key "parties_users", "users"
-  add_foreign_key "quests", "activities"
   add_foreign_key "quests", "locations"
   add_foreign_key "quests", "parties"
+  add_foreign_key "table_activities_quests", "activities"
+  add_foreign_key "table_activities_quests", "quests"
 end
