@@ -5,7 +5,7 @@ class CreateQuests < ActiveRecord::Migration
       t.references  :location, index: true, foreign_key: true, null: false
       t.references  :activity, index: true, foreign_key: true, null: false
       t.references  :party, index: true, foreign_key: true, null: false
-      t.datetime    :start_time, null:false
+      t.datetime    :start_time, null: false
 
       t.timestamps null: false
     end
