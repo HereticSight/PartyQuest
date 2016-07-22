@@ -16,10 +16,10 @@
   </p>
 
   <p>
-    Parties:
+    Campaigns:
     <ul>
-      <% @user.parties.each do |party| %>
-        <li><%= party.name %></li>
+      <% @user.campaigns.each do |campaign| %>
+        <li><%= campaign.name %></li>
       <% end %>
     </ul>
   </p>
@@ -27,14 +27,14 @@
   <p>
     Quests:
     <ul>
-      <% @user.quests.each do |quest| %>
-        <li><%= quest.name %></li>
-        <li><%= quest.location.address %>, <%= quest.location.city %>, <%= quest.location.state %></li>
+      <% @user.campaigns.each do |quest| %>
+        <li><%= campaign.name %></li>
+        <li><%= campaign.location.address %>, <%= campaign.location.city %>, <%= campaign.location.state %></li>
         <li>
-          <% quest.activities.each do |activity| %>
-            <%= activity.name %><br>
-            <%= activity.description %><br>
-            <%= activity.price_range %><br>
+          <% campaign.quests.each do |quest| %>
+            <%= quest.name %><br>
+            <%= quest.description %><br>
+            <%= quest.price_range %><br>
           <% end %>
         </li>
       <% end %>

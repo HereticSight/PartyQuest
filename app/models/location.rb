@@ -1,3 +1,3 @@
 class Location < ActiveRecord::Base
-  has_many :quests
+  has_many :campaigns
 end

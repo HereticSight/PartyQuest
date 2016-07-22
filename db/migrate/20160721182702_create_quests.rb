@@ -1,6 +1,6 @@
-class CreateActivities < ActiveRecord::Migration
+class CreateQuests < ActiveRecord::Migration
   def change
-    create_table  :activities do |t|
+    create_table  :quests do |t|
       t.string    :name, null: false, limit: 128
       t.text      :description
       t.integer   :price_range, default: 1, limit: 1
