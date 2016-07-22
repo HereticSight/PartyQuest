@@ -1,4 +1,11 @@
 class User < ActiveRecord::Base
+  has_many :owned_parties, foreign_key: :user_id, class_name: "Party"
+  has_and_belongs_to_many :parties
+  has_many :quests, through: :parties, source: :quest
+  has_many :created_quests, through: :owned_parties, source: :quest
+  has_many :visited_locations, through: :quests, source: :location
+  has_many :activities, through: :quests, source: :activity
+
   has_attached_file :avatar
 
   email_regex = /\A[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,63}\z/i

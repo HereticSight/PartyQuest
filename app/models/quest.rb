@@ -1,5 +1,6 @@
 class Quest < ActiveRecord::Base
-  belongs_to :location
-  belongs_to :activity
+  has_one :location
+  has_and_belongs_to_many :activities
   belongs_to :party
+  has_one :creator, through: :party, source: :leader
 end
