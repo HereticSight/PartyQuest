@@ -1,5 +1,5 @@
 <%= form_for @user do |f| %>
-  <!-- Add squid when kenny makes partial: render partial: 'shared/errors', locals: {errors: @errors}  -->
+  <%= render partial: 'shared/errors', locals: {errors: @errors} %>
 
   <p>
     <%= f.label :first_name %>
