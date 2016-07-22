@@ -5,6 +5,7 @@ class PartiesController < ApplicationController
 
   def show
     @party = Party.find_by(id: params[:id])
+    @guests = @party.parties_users
   end
 
   def new
@@ -14,11 +15,11 @@ class PartiesController < ApplicationController
   def create
     @party = current_user.parties.build(party_params)
     if @party.save
-      flash[:success] = "There was an error saving your party"
-      redirect_to
+      flash[:success] = "You've successfully created your party!"
+      redirect_to @party
     else
       @errors = @party.errors.full_messages
-      flash[:danger] = "There was an error saving your party"
+      flash[:danger] = "Oops! We couldn't create your party!"
       render 'new'
     end
   end

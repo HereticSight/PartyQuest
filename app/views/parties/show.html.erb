@@ -1,0 +1,16 @@
+<div class="main_container">
+  <h1><%= @party.name %></h1>
+  <div class="invitation_link">Invitation Link: <%= @party.invite_link %></div>
+  <h2>Guests</h2>
+  <div class="party_guests">
+    <% if @guests %>
+      <%= @guests.each do |guest| %>
+        <div class="guest_info">
+          <%= link_to guest.username, guest %>
+          <%= guest.avatar %>
+        </div>
+    <% else %>
+      <h2>No guests currently.</h2>
+    <% end %>
+  </div>
+</div>
