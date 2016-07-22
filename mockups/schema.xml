@@ -41,7 +41,7 @@
     <type label="Inet CIDR Addr" length="0" sql="CIDR" quote="'"/>
     <type label="Geometry" length="0" sql="GEOMETRY" quote="'"/>
   </group>
-</datatypes><table x="879" y="226" name="locations">
+</datatypes><table x="710" y="529" name="locations">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -64,7 +64,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="872" y="491" name="activities">
+<table x="899" y="359" name="activities">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -81,7 +81,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="571" y="392" name="quests">
+<table x="491" y="397" name="quests">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -91,10 +91,6 @@
 <row name="location_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="locations" row="id" />
-</row>
-<row name="activity_id" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default><relation table="activities" row="id" />
 </row>
 <row name="party_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
@@ -107,7 +103,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="228" y="452" name="parties">
+<table x="253" y="547" name="parties">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -125,7 +121,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="571" y="269" name="parties_users">
+<table x="272" y="435" name="parties_users">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -141,7 +137,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="251" y="214" name="users">
+<table x="266" y="204" name="users">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -166,6 +162,22 @@
 <row name="state" null="1" autoincrement="0">
 <datatype>VARCHAR(64)</datatype>
 <default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="689" y="356" name="activities_quests">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="activity_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="activities" row="id" />
+</row>
+<row name="quest_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="quests" row="id" />
+</row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>

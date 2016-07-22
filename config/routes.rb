@@ -8,5 +8,6 @@ Rails.application.routes.draw do
 
   resources :users, path_names: {new: 'signup', create: 'signup'}
   resources :parties, except: :index
+  resources :quests
 
 end
