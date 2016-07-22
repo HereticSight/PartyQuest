@@ -5,7 +5,7 @@ class PartiesController < ApplicationController
 
   def show
     @party = Party.find_by(id: params[:id])
-    @guests = @party.parties_users
+    @users = @party.parties_users
   end
 
   def new
