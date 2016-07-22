@@ -7,4 +7,6 @@ Rails.application.routes.draw do
   get '/logout', to: 'sessions#destroy'
 
   resources :users, path_names: {new: 'signup', create: 'signup'}
+  resources :parties, except: :index
+
 end
