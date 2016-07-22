@@ -1,0 +1,25 @@
+<h1><%= @user.username %></h1>
+  <p>
+    <%= @user.first_name %> <%= @user.last_name %>
+  </p>
+
+  <p>
+    Contact: <%= @user.email %>
+  </p>
+
+  <p>
+    Bio: <%= @user.bio %>
+  </p>
+
+  <p>
+    City: <%= @user.city %>
+  </p>
+
+  <p>
+    Parties:
+    <ul>
+      <% @user.parties.each do |party| %>
+        <li><%= party.name %></li>
+      <% end %>
+    </ul>
+  </p>
