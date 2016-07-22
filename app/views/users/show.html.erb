@@ -27,6 +27,16 @@
   <p>
     Quests:
     <ul>
-      <% @user.%>
+      <% @user.quests.each do |quest| %>
+        <li><%= quest.name %></li>
+        <li><%= quest.location.address %>, <%= quest.location.city %>, <%= quest.location.state %></li>
+        <li>
+          <% quest.activities.each do |activity| %>
+            <%= activity.name %><br>
+            <%= activity.description %><br>
+            <%= activity.price_range %><br>
+          <% end %>
+        </li>
+      <% end %>
     </ul>
   </p>
