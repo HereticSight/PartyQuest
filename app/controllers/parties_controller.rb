@@ -5,15 +5,15 @@ class PartiesController < ApplicationController
 
   def show
     @party = Party.find_by(id: params[:id])
-    @users = @party.parties_users
+    @user = current_user
   end
 
   def new
-    @party = current_user.parties.new
+    @party = Party.new
   end
 
   def create
-    @party = current_user.parties.build(party_params)
+    @party = @current_user.owned_parties.new(party_params)
     if @party.save
       flash[:success] = "You've successfully created your party!"
       redirect_to @party
@@ -36,14 +36,14 @@ class PartiesController < ApplicationController
   end
 
   def edit
-    if current_user.id != @party.leader_id
+    if @current_user.id != @party.leader_id
       flash[:danger] = "You do not have access to this party."
       redirect_to parties_url
     end
   end
 
   def destroy
-    if current_user.id != @party.leader_id
+    if @current_user.id != @party.leader_id
       flash[:danger] = "You do not have access to this party."
       redirect_to parties_url
     else
@@ -56,7 +56,7 @@ class PartiesController < ApplicationController
   private
 
   def set_party
-    @party = Party.find_by(params[:id])
+    @party = Party.find_by(id: params[:id])
   end
 
   def party_params
