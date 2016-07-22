@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :current_user, only: [:index, :new, :edit, :update, :destroy]
+  before_action :current_user
 
   def index
     @users = User.all
@@ -22,9 +22,10 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      log_in(@user)
+      # session[:user_id] = @user.id
+      log_in @user
       flash[:success] = "You've successfully created a PartyQuest account. Gear up and make a quest!"
-      redirect_to root_url
+      redirect_to @user
     else
       @errors = @user.errors.full_messages
       flash.now[:danger] = "Oops! We couldn't create your account!"
@@ -34,6 +35,8 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find_by(id: params[:id])
+    redirect_to users_url if @user == nil
+    # binding.pry
     if !current_user?(@user)
       flash[:danger] = "You do not have access to this profile."
       redirect_to users_url
@@ -67,7 +70,7 @@ class UsersController < ApplicationController
 
   private
     def user_params
-      params.require(:user).permit(:username, :email, :password, :bio, :city, :state, :profile_img, :first_name, :last_name)
+      params.require(:user).permit(:username, :email, :password, :password_confirmation, :bio, :city, :state, :profile_img, :first_name, :last_name)
     end
 
 end
