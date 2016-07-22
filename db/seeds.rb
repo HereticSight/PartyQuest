@@ -19,7 +19,7 @@ Quest.create!(name:"Eat 8 Jalapeno poppers", description:"Down those poppers", p
 campaign = Campaign.create(name:"PoopyQuesters",
               leader_id: User.first.id,
               start_time: Time.now,
-              end_time: Time.now)
+              end_time: Time.now,
               location_id: 1)
 
 User.all.each do |user|
