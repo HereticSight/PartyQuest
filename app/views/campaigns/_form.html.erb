@@ -1,4 +1,4 @@
-<%= form_for @party do |f| %>
+<%= form_for @campaign do |f| %>
   <%= render partial: 'shared/errors', locals: {errors: @errors} %>
   <p>
     <%= f.label :name %>
@@ -6,7 +6,7 @@
   </p>
 
   <p>
-    <%= f.submit "Create your party!" %>
+    <%= f.submit "Create your campaign!" %>
   </p>
 
 <% end %>

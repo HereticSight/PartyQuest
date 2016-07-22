@@ -16,21 +16,35 @@ ActiveRecord::Schema.define(version: 20160722013247) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "activities", force: :cascade do |t|
-    t.string   "name",        limit: 128,             null: false
-    t.text     "description"
-    t.integer  "price_range", limit: 2,   default: 1
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+  create_table "campaigns", force: :cascade do |t|
+    t.string   "name",        limit: 128, null: false
+    t.text     "invite_link"
+    t.integer  "leader_id",               null: false
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.integer  "location_id"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
-  create_table "activities_quests", force: :cascade do |t|
-    t.integer "activity_id"
+  add_index "campaigns", ["leader_id"], name: "index_campaigns_on_leader_id", using: :btree
+  add_index "campaigns", ["location_id"], name: "index_campaigns_on_location_id", using: :btree
+
+  create_table "campaigns_quests", force: :cascade do |t|
+    t.integer "campaign_id"
     t.integer "quest_id"
   end
 
-  add_index "activities_quests", ["activity_id"], name: "index_activities_quests_on_activity_id", using: :btree
-  add_index "activities_quests", ["quest_id"], name: "index_activities_quests_on_quest_id", using: :btree
+  add_index "campaigns_quests", ["campaign_id"], name: "index_campaigns_quests_on_campaign_id", using: :btree
+  add_index "campaigns_quests", ["quest_id"], name: "index_campaigns_quests_on_quest_id", using: :btree
+
+  create_table "campaigns_users", force: :cascade do |t|
+    t.integer "campaign_id"
+    t.integer "user_id"
+  end
+
+  add_index "campaigns_users", ["campaign_id"], name: "index_campaigns_users_on_campaign_id", using: :btree
+  add_index "campaigns_users", ["user_id"], name: "index_campaigns_users_on_user_id", using: :btree
 
   create_table "locations", force: :cascade do |t|
     t.decimal  "latitude"
@@ -42,41 +56,18 @@ ActiveRecord::Schema.define(version: 20160722013247) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "parties", force: :cascade do |t|
-    t.string   "name",        limit: 128, null: false
-    t.text     "invite_link"
-    t.integer  "leader_id",               null: false
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
-  end
-
-  add_index "parties", ["leader_id"], name: "index_parties_on_leader_id", using: :btree
-
-  create_table "parties_users", force: :cascade do |t|
-    t.integer "party_id"
-    t.integer "user_id"
-  end
-
-  add_index "parties_users", ["party_id"], name: "index_parties_users_on_party_id", using: :btree
-  add_index "parties_users", ["user_id"], name: "index_parties_users_on_user_id", using: :btree
-
   create_table "quests", force: :cascade do |t|
-    t.string   "name",        limit: 64, null: false
-    t.integer  "location_id"
-    t.integer  "party_id"
-    t.datetime "start_time",             null: false
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.string   "name",        limit: 128,             null: false
+    t.text     "description"
+    t.integer  "price_range", limit: 2,   default: 1
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
   end
-
-  add_index "quests", ["location_id"], name: "index_quests_on_location_id", using: :btree
-  add_index "quests", ["party_id"], name: "index_quests_on_party_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "username",            limit: 64, null: false
     t.text     "email",                          null: false
     t.string   "password_digest",                null: false
-    t.text     "profile_img"
     t.text     "bio"
     t.string   "city",                limit: 64
     t.string   "state",               limit: 64
@@ -90,10 +81,8 @@ ActiveRecord::Schema.define(version: 20160722013247) do
     t.datetime "avatar_updated_at"
   end
 
-  add_foreign_key "activities_quests", "activities"
-  add_foreign_key "activities_quests", "quests"
-  add_foreign_key "parties_users", "parties"
-  add_foreign_key "parties_users", "users"
-  add_foreign_key "quests", "locations"
-  add_foreign_key "quests", "parties"
+  add_foreign_key "campaigns_quests", "campaigns"
+  add_foreign_key "campaigns_quests", "quests"
+  add_foreign_key "campaigns_users", "campaigns"
+  add_foreign_key "campaigns_users", "users"
 end

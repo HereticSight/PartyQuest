@@ -1,10 +1,9 @@
 class User < ActiveRecord::Base
-  has_many :owned_parties, foreign_key: :leader_id, class_name: "Party"
-  has_and_belongs_to_many :parties
-  has_many :quests, through: :parties
-  has_many :created_quests, through: :owned_parties, source: :leader
-  has_many :visited_locations, through: :quests, source: :location
-  has_many :activities, through: :quests, source: :activities
+  has_many :created_campaigns, foreign_key: :leader_id, class_name: "Campaign"
+  has_and_belongs_to_many :campaigns
+  has_many :quests, through: :campaigns
+  has_many :visited_locations, through: :campaigns, source: :location
+  has_many :quests, through: :campaigns, source: :quests
 
   has_attached_file :avatar
 
