@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action current_user, only: [:index, :new, :edit, :update, :destroy]
+  before_action :current_user, only: [:index, :new, :edit, :update, :destroy]
 
   def index
   end
@@ -41,14 +41,18 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find_by(id: params[:id])
-    
-    if @user.update_attributes(user_params)
-      flash[:success] = "Profile updated!"
-      redirect_to @user
+    if current_user?(@user)
+      if @user.update_attributes(user_params)
+        flash[:success] = "Profile updated!"
+        redirect_to @user
+      else
+        @errors = @user.errors.full_messages
+        flash.now[:danger] = "Uh oh! Something went wrong!"
+        render 'users/edit'
+      end
     else
-      @errors = @user.errors.full_messages
-      flash.now[:danger] = "Uh oh! Something went wrong!"
-      render 'users/edit'
+      flash[:danger] = "You do not have access to this profile."
+      redirect_to root_url
     end
   end
 
