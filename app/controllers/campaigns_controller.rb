@@ -9,7 +9,11 @@ class CampaignsController < ApplicationController
   end
 
   def new
-    @campaign = Campaign.new
+    if @current_user
+      @campaign = Campaign.new
+    else
+      redirect_to '/login'
+    end
   end
 
   def create
@@ -36,7 +40,7 @@ class CampaignsController < ApplicationController
   end
 
   def edit
-    if @current_user.id != @campaign.leader_id
+    if @current_user && @current_user.id != @campaign.leader_id
       flash[:danger] = "You do not have access to this campaign."
       redirect_to campaigns_url
     end
