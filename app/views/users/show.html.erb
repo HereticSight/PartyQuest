@@ -25,20 +25,12 @@
   </p>
 
   <p>
-    Quests:
-    <ul>
-      <% @user.campaigns.each do |quest| %>
-        <li><%= campaign.name %></li>
-        <li><%= campaign.location.address %>, <%= campaign.location.city %>, <%= campaign.location.state %></li>
-        <li>
-          <% campaign.quests.each do |quest| %>
-            <%= quest.name %><br>
-            <%= quest.description %><br>
-            <%= quest.price_range %><br>
-          <% end %>
-        </li>
-      <% end %>
-    </ul>
+    Quests:<br>
+    <% @user.quests.each do |quest| %>
+      <%= quest.name %><br>
+      Description: <%= quest.description %><br>
+      Price Range: <%= quest.price_range %> moneys
+    <% end %>
   </p>
 
   <p>
