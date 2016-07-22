@@ -16,6 +16,11 @@ User.create!(first_name:"Mary",
 party = Party.create(name:"PoopyQuesters",
               user_id: User.first.id)
 
+User.all.each do |user|
+  party.members << user
+  party.save
+end
+
 Location.create!(address: "123 Fake St", city:"New York", state:"NY")
 
 Activity.create!(name:"Eat 8 Jalapeno poppers", description:"Down those poppers", price_range:2)
