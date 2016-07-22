@@ -45,12 +45,12 @@ ActiveRecord::Schema.define(version: 20160722013247) do
   create_table "parties", force: :cascade do |t|
     t.string   "name",        limit: 128, null: false
     t.text     "invite_link"
-    t.integer  "user_id",                 null: false
+    t.integer  "leader_id",               null: false
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
   end
 
-  add_index "parties", ["user_id"], name: "index_parties_on_user_id", using: :btree
+  add_index "parties", ["leader_id"], name: "index_parties_on_leader_id", using: :btree
 
   create_table "parties_users", force: :cascade do |t|
     t.integer "party_id"
@@ -92,7 +92,6 @@ ActiveRecord::Schema.define(version: 20160722013247) do
 
   add_foreign_key "activities_quests", "activities"
   add_foreign_key "activities_quests", "quests"
-  add_foreign_key "parties", "users"
   add_foreign_key "parties_users", "parties"
   add_foreign_key "parties_users", "users"
   add_foreign_key "quests", "locations"

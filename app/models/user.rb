@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_many :owned_parties, foreign_key: :user_id, class_name: "Party"
+  has_many :owned_parties, foreign_key: :leader_id, class_name: "Party"
   has_and_belongs_to_many :parties
   has_many :quests, through: :parties, source: :quest
   has_many :created_quests, through: :owned_parties, source: :quest
@@ -17,4 +17,6 @@ class User < ActiveRecord::Base
   validates :bio, length: { maximum: 1000 }
   validates :city, length: { maximum: 64 }
   validates :state, length: { maximum: 64 }
+  validates :first_name, length: { maximum: 32 }
+  validates :last_name, length: { maximum: 32 }
 end

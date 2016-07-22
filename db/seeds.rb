@@ -14,10 +14,10 @@ User.create!(first_name:"Mary",
 
 
 party = Party.create(name:"PoopyQuesters",
-              user_id: User.first.id)
+              leader_id: User.first.id)
 
 User.all.each do |user|
-  party.members << user
+  party.users << user
   party.save
 end
 
