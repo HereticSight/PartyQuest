@@ -24,14 +24,6 @@ ActiveRecord::Schema.define(version: 20160722013247) do
     t.datetime "updated_at",                          null: false
   end
 
-  create_table "activities_quests", force: :cascade do |t|
-    t.integer "activity_id"
-    t.integer "quest_id"
-  end
-
-  add_index "activities_quests", ["activity_id"], name: "index_activities_quests_on_activity_id", using: :btree
-  add_index "activities_quests", ["quest_id"], name: "index_activities_quests_on_quest_id", using: :btree
-
   create_table "locations", force: :cascade do |t|
     t.decimal  "latitude"
     t.decimal  "longitude"
@@ -45,16 +37,16 @@ ActiveRecord::Schema.define(version: 20160722013247) do
   create_table "parties", force: :cascade do |t|
     t.string   "name",        limit: 128, null: false
     t.text     "invite_link"
-    t.integer  "leader_id",               null: false
+    t.integer  "user_id",                 null: false
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
   end
 
-  add_index "parties", ["leader_id"], name: "index_parties_on_leader_id", using: :btree
+  add_index "parties", ["user_id"], name: "index_parties_on_user_id", using: :btree
 
   create_table "parties_users", force: :cascade do |t|
-    t.integer "party_id"
-    t.integer "user_id"
+    t.integer "party_id", null: false
+    t.integer "user_id",  null: false
   end
 
   add_index "parties_users", ["party_id"], name: "index_parties_users_on_party_id", using: :btree
@@ -62,8 +54,8 @@ ActiveRecord::Schema.define(version: 20160722013247) do
 
   create_table "quests", force: :cascade do |t|
     t.string   "name",        limit: 64, null: false
-    t.integer  "location_id"
-    t.integer  "party_id"
+    t.integer  "location_id",            null: false
+    t.integer  "party_id",               null: false
     t.datetime "start_time",             null: false
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
@@ -71,6 +63,14 @@ ActiveRecord::Schema.define(version: 20160722013247) do
 
   add_index "quests", ["location_id"], name: "index_quests_on_location_id", using: :btree
   add_index "quests", ["party_id"], name: "index_quests_on_party_id", using: :btree
+
+  create_table "table_activities_quests", force: :cascade do |t|
+    t.integer "activity_id", null: false
+    t.integer "quest_id",    null: false
+  end
+
+  add_index "table_activities_quests", ["activity_id"], name: "index_table_activities_quests_on_activity_id", using: :btree
+  add_index "table_activities_quests", ["quest_id"], name: "index_table_activities_quests_on_quest_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "username",            limit: 64, null: false
@@ -90,10 +90,11 @@ ActiveRecord::Schema.define(version: 20160722013247) do
     t.datetime "avatar_updated_at"
   end
 
-  add_foreign_key "activities_quests", "activities"
-  add_foreign_key "activities_quests", "quests"
+  add_foreign_key "parties", "users"
   add_foreign_key "parties_users", "parties"
   add_foreign_key "parties_users", "users"
   add_foreign_key "quests", "locations"
   add_foreign_key "quests", "parties"
+  add_foreign_key "table_activities_quests", "activities"
+  add_foreign_key "table_activities_quests", "quests"
 end

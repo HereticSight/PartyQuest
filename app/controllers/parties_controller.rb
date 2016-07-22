@@ -1,7 +1,7 @@
 class PartiesController < ApplicationController
 
   before_action :set_party, only: [:show, :update, :edit, :destroy]
-  before_action :current_user, only: [:create, :new]
+  before_action :current_user, only: [:create, :new, :edit, :destroy]
 
   def show
     @party = Party.find_by(id: params[:id])
@@ -36,10 +36,21 @@ class PartiesController < ApplicationController
   end
 
   def edit
+    if current_user.id != @party.leader_id
+      flash[:danger] = "You do not have access to this party."
+      redirect_to parties_url
+    end
   end
 
   def destroy
-    @party.destroy
+    if current_user.id != @party.leader_id
+      flash[:danger] = "You do not have access to this party."
+      redirect_to parties_url
+    else
+      @party.destroy
+      flash[:success] = "Party deleted."
+      redirect_to root_url
+    end
   end
 
   private

@@ -1,0 +1,13 @@
+<%= form_for @party do |f| %>
+  <%= render partial: 'shared/errors', locals: {errors: @errors} %>
+
+  <p>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <%= f.submit "Create your party!" %>
+  </p>
+
+<% end %>

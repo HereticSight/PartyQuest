@@ -1,5 +1,9 @@
 <div class="main_container">
   <h1><%= @party.name %></h1>
+  <% if current_user.id == @party.leader_id %>
+    <div class-"button"><%=link_to "edit party", edit_party_path(@party)%></div>
+    <div class-"button"><%=link_to "delete party", @party, method: :delete, data: { confirm: "Are you sure you want to delete this party?" }%></div>
+  <% end %>
   <div class="invitation_link">Invitation Link: <%= @party.invite_link %></div>
   <h2>Guests</h2>
   <div class="party_guests">
@@ -7,7 +11,7 @@
       <%= @users.each do |user| %>
         <div class="guest_info">
           <%= link_to user.username, user_path(user) %>
-          <%= guest.avatar %>
+          <%= user.avatar %>
         </div>
     <% else %>
       <h2>No guests currently.</h2>
