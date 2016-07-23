@@ -1,16 +1,19 @@
 class CampaignsController < ApplicationController
 
   before_action :set_campaign, only: [:show, :update, :edit, :destroy]
-  before_action :current_user, only: [:create, :new, :show, :edit, :destroy]
+  before_action :current_user, only: [:create, :new, :edit, :destroy]
 
   def show
     @campaign = Campaign.find_by(id: params[:id])
-    @quests = @campaign.quests 
+    @user = current_user
   end
 
   def new
-    login_redirect
-    @campaign = Campaign.new
+    if @current_user
+      @campaign = Campaign.new
+    else
+      redirect_to '/login'
+    end
   end
 
   def create

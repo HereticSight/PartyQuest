@@ -14,14 +14,12 @@ class LocationsController < ApplicationController
   def new
     if @current_user
       @location = Location.new
-      @campaign = Campaign.find_by(id: params[:campaign_id])
     else
       redirect_to '/login'
     end
   end
 
   def create
-    binding.pry
     @location = Location.find_or_create_by(location_params)
     @campaign = Campaign.find_by(id: params[:campaign_id])
     if @location.save
