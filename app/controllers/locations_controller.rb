@@ -23,7 +23,6 @@ class LocationsController < ApplicationController
     @location = Location.find_or_create_by(location_params)
     if @location.save
       flash[:success] = "You've successfully created your location!"
-      redirect_to new_location_path(campaign_id: @campaign.id)
     else
       @errors = @location.errors.full_messages
       flash[:danger] = "Oops! We couldn't create your location!"
