@@ -31,7 +31,7 @@ class LocationsController < ApplicationController
       flash[:success] = "You've successfully created your location!"
       @campaign.location = @location
       @campaign.save
-      redirect_to @campaign
+      redirect_to new_campaign_quest_path(@campaign)
     else
       @errors = @location.errors.full_messages
       flash[:danger] = "Oops! We couldn't create your location!"

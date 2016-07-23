@@ -5,7 +5,12 @@ class User < ActiveRecord::Base
   has_many :visited_locations, through: :campaigns, source: :location
   has_many :quests, through: :campaigns, source: :quests
 
-  has_attached_file :avatar
+  has_attached_file :avatar, styles: {
+    thumb: '100x100>',
+    square: '200x200#',
+    medium: '300x300>'
+  }
+  validates_attachment_content_type :avatar, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
   email_regex = /\A[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,63}\z/i
   password_format = /\A.*(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&+=]).*\z/
