@@ -4,6 +4,7 @@
   <title>Party Quest</title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkUOdZ5y7hMm0yrcCQoCvLwzdM6M8s5qk&&libraries=places&callback=initMap" async defer></script>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -22,25 +23,23 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
               <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a href="#">Home</a></li>
+                <li class="active"><a href="/">Home</a></li>
                 <li><a href="#">About</a></li>
                 <li><a href="#">Contact</a></li>
                 <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Account <span class="caret"></span></a>
                   <% if @current_user %>
                     <ul class="dropdown-menu" role="menu">
-                      <li><a href="#">Action</a></li>
-                      <li><a href="#">Action 2</a></li>
-                      <li><a href="#">Action 3</a></li>
+                      <li><a href='<%= user_path @current_user %>'>Profile</a></li>
+                      <li><a href="#">Campaigns</a></li>
+                      <li><a href="#">Quests</a></li>
                       <li class="divider"></li>
-                      <li class="dropdown-header">Nav header</li>
-                      <li><a href="#">Separated link</a></li>
-                      <li><a href="#">Separated link 2</a></li>
+                      <li><a href="<%= logout_path %>">Log out</a></li>
                     </ul>
                   <% else %>
                     <ul class="dropdown-menu" role="menu">
-                      <li><a href="#">Sign Up</a></li>
-                      <li><a href="#">Log In</a></li>
+                      <li><a href="<%= new_user_path %>">Sign Up</a></li>
+                      <li><a href="<%= login_path %>">Log In</a></li>
                     </ul>
                   <% end %>
                 </li>
