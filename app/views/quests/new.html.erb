@@ -1,0 +1,24 @@
+<h1>Add a new Quest to your campaign!</h1>
+  <%= form_for([@campaign, @quest]) do |f| %>
+    <%= render partial: 'shared/errors', locals: {errors: @errors} %>
+
+    <p>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </p>
+
+    <p>
+      <%= f.label :description %>
+      <%= f.text_area :description, rows: 5, cols: 40, placeholder: "Describe your quest!" %>
+    </p>
+
+    <p>
+      <%= f.label :price_range %>
+      <%= f.select :price_range, price_range %>
+    </p>
+
+    <p>
+      <%= f.submit "Add this quest!" %>
+    </p>
+
+  <% end %>

@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get '/logout', to: 'sessions#destroy'
 
   resources :users, path_names: {new: 'signup', create: 'signup'}
-  resources :campaigns, except: :index
+  resources :campaigns, except: :index do
+    resources :quests, only: [:new, :create, :destroy]  
+  end
 
 end

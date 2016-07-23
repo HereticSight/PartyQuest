@@ -17,4 +17,8 @@ class ApplicationController < ActionController::Base
   def current_user?(user)
     @current_user == user
   end
+
+  def login_redirect
+    redirect_to login_url unless logged_in?
+  end
 end

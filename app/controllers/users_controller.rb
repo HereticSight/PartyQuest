@@ -34,8 +34,6 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find_by(id: params[:id])
-    redirect_to users_url if @user == nil
-    # binding.pry
     if !current_user?(@user)
       flash[:danger] = "You do not have access to this profile."
       redirect_to users_url
