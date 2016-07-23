@@ -5,6 +5,7 @@ class CampaignsController < ApplicationController
 
   def show
     @campaign = Campaign.find_by(id: params[:id])
+    @quests = @campaign.quests 
   end
 
   def new

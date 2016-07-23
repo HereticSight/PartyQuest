@@ -12,6 +12,19 @@
       <h2>Invitation Link:</h2> <%= @campaign.invite_link %>
     </div>
   <% end %>
+  <h2>Quests</h2>
+    <ul>
+      <% @quests.each do |quest| %>
+        <li>
+          Quest: <%= quest.name %><br>
+          Description: <%= quest.description %><br>
+          Price Range: <%= quest.price_range %>
+        </li>
+      <% end %>
+    </ul>
+    <% if current_user?(@campaign.leader) %>
+      <%= link_to "Add a quest to this campaign!", new_campaign_quest_path(@campaign) %>
+    <% end %>
   <h2>Guests</h2>
   <div class="campaign_guests">
     <% if @users %>
