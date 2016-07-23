@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   resources :users, path_names: {new: 'signup', create: 'signup'}
   resources :campaigns, except: :index do
-    resources :quests, only: [:new, :create]  
+    resources :quests, only: [:new, :create, :destroy]  
   end
 
 end

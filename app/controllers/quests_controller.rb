@@ -1,24 +1,38 @@
 class QuestsController < ApplicationController
   def new
+    @campaign = Campaign.find_by(id: params[:campaign_id])
     @quest = Quest.new
     login_redirect
   end
 
   def create
-    if logged_in?
-      @campaign = Campaign.find_by(id: params[:campaign_id])
-      @quest = Quest.new(quest_params)
-      if @quest.save
-        flash[:success] = "You've created a new campaign! Add a location and start campaigning!"
-        redirect_to @campaign
-      else
-        @errors = @quest.errors.full_messages
-        flash.now[:danger] = "Something's wrong with yout campaign!"
-        render 'new'
-      end
+    login_redirect
+    @campaign = Campaign.find_by(id: params[:campaign_id])
+    @quest = @campaign.quests.build(quest_params)
+    if @quest.save
+      @campaign.quests << @quest
+      flash[:success] = "You've added a new quest! Add some more or gear up and get out there!"
+      redirect_to @campaign
     else
-      redirect_to login_url
+      @errors = @quest.errors.full_messages
+      flash.now[:danger] = "Something's wrong with your quest!"
+      render 'new'
     end
+  end
+
+  def destroy
+    @campaign = Campaign.find_by(id: params[:campaign_id])
+    login_redirect
+    if @current_user == @campaign.leader_id
+      @quest = Quest.find_by(id: params[:id])
+      @quest.destroy
+      flash[:success] = "You've successfully removed a quest."
+      redirect_to @campaign
+    else
+      flash[:danger] = "You cannot delete this quest."
+      redirect_to @campaign
+    end
+
   end
 
   private
