@@ -8,23 +8,30 @@ class LocationsController < ApplicationController
 
   def show
     @campaign = Campaign.find_by(id: params[:campaign_id])
-    @user = current_user
+    @location = @campaign.location
   end
 
   def new
     if @current_user
-      @location = Location.new
+      @campaign = Campaign.find_by(id: params[:campaign_id])
+      if @current_user.id == @campaign.leader_id
+        @location = @campaign.build_location
+      else
+        redirect_to @campaign
+      end
     else
       redirect_to '/login'
     end
   end
 
   def create
-    @location = Location.find_or_create_by(location_params)
     @campaign = Campaign.find_by(id: params[:campaign_id])
+    @location = Location.find_or_initialize_by(location_params)
     if @location.save
       flash[:success] = "You've successfully created your location!"
-      redirect_to root_path
+      @campaign.location = @location
+      @campaign.save
+      redirect_to @campaign
     else
       @errors = @location.errors.full_messages
       flash[:danger] = "Oops! We couldn't create your location!"
