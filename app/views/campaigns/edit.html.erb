@@ -1,12 +1,2 @@
-<%= form_for @campaign do |f| %>
-  <%= render partial: 'shared/errors', locals: {errors: @errors} %>
-  <p>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </p>
-
-  <p>
-    <%= f.submit "Create your campaign!" %>
-  </p>
-
-<% end %>
+<h1>Edit your Campaign</h1>
+  <%= render 'form' %>

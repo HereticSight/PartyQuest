@@ -1,15 +1,30 @@
 <div class="main_container">
   <h1><%= @campaign.name %></h1>
-  <% if @user %>
-    <% if @user.id == @campaign.leader_id %>
+  <% if @current_user %>
+    <% if @current_user.id == @campaign.leader_id %>
       <div class-"edit_or_delete">
         <%=link_to "edit campaign", edit_campaign_path(@campaign)%> | <%=link_to "delete campaign", @campaign, method: :delete, data: { confirm: "Are you sure you want to delete this campaign?" }%>
       </div>
     <% end %>
   <% end %>
-  <div class="invitation_link">
-    <h2>Invitation Link:</h2> <%= @campaign.invite_link %>
-  </div>
+  <% if current_user?(@campaign.leader) || @campaign.users.include?(@current_user) %>
+    <div class="invitation_link">
+      <h2>Invitation Link:</h2> <%= @campaign.invite_link %>
+    </div>
+  <% end %>
+  <h2>Quests</h2>
+    <ul>
+      <% @quests.each do |quest| %>
+        <li>
+          Quest: <%= quest.name %><br>
+          Description: <%= quest.description %><br>
+          Price Range: <%= quest.price_range %>
+        </li>
+      <% end %>
+    </ul>
+    <% if current_user?(@campaign.leader) %>
+      <%= link_to "Add a quest to this campaign!", new_campaign_quest_path(@campaign) %>
+    <% end %>
   <h2>Guests</h2>
   <div class="campaign_guests">
     <% if @users %>

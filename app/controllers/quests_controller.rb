@@ -1,6 +1,7 @@
 class QuestsController < ApplicationController
   def new
     @campaign = Campaign.find_by(id: params[:campaign_id])
+    redirect_to @campaign unless @campaign.leader == @current_user
     @quest = Quest.new
     login_redirect
   end
@@ -8,6 +9,7 @@ class QuestsController < ApplicationController
   def create
     login_redirect
     @campaign = Campaign.find_by(id: params[:campaign_id])
+    redirect_to @campaign unless @campaign.leader == @current_user
     @quest = @campaign.quests.build(quest_params)
     if @quest.save
       @campaign.quests << @quest
