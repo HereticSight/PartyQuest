@@ -17,10 +17,10 @@ class CampaignsController < ApplicationController
   end
 
   def create
-    @campaign = @current_user.owned_campaigns.new(campaign_params)
+    @campaign = @current_user.created_campaigns.new(campaign_params)
     if @campaign.save
       flash[:success] = "You've successfully created your campaign!"
-      redirect_to @campaign
+      redirect_to new_location_path
     else
       @errors = @campaign.errors.full_messages
       flash[:danger] = "Oops! We couldn't create your campaign!"

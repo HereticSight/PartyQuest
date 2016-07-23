@@ -1,0 +1,22 @@
+<%= form_for @location do |f| %>
+  <%= render partial: 'shared/errors', locals: {errors: @errors} %>
+  <p>
+    <%= f.label :address %>
+    <%= f.text_field :address %>
+  </p>
+
+  <p>
+    <%= f.label :city %>
+    <%= f.text_field :city %>
+  </p>
+
+  <p>
+    <%= f.label :state %>
+    <%= f.text_field :state %>
+  </p>
+
+  <p>
+    <%= f.submit "Create your location!" %>
+  </p>
+
+<% end %>
