@@ -9,14 +9,18 @@ class CampaignsController < ApplicationController
   end
 
   def new
-    @campaign = Campaign.new
+    if @current_user
+      @campaign = Campaign.new
+    else
+      redirect_to '/login'
+    end
   end
 
   def create
-    @campaign = @current_user.owned_campaigns.new(campaign_params)
+    @campaign = @current_user.created_campaigns.new(campaign_params)
     if @campaign.save
       flash[:success] = "You've successfully created your campaign!"
-      redirect_to @campaign
+      redirect_to new_location_path
     else
       @errors = @campaign.errors.full_messages
       flash[:danger] = "Oops! We couldn't create your campaign!"
@@ -36,7 +40,7 @@ class CampaignsController < ApplicationController
   end
 
   def edit
-    if @current_user.id != @campaign.leader_id
+    if @current_user && @current_user.id != @campaign.leader_id
       flash[:danger] = "You do not have access to this campaign."
       redirect_to campaigns_url
     end
