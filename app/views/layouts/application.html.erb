@@ -2,9 +2,10 @@
 <html>
 <head>
   <title>Party Quest</title>
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Dancing+Script" />
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkUOdZ5y7hMm0yrcCQoCvLwzdM6M8s5qk&&libraries=places&callback=initMap" async defer></script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZdeZHwH56fPgr1Ray067LcQi1U9SXzTs&callback=initMap&libraries=places"></script>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -19,13 +20,11 @@
                 <span class="icon-bar middle-bar"></span>
                 <span class="icon-bar bottom-bar"></span>
               </button>
-              <a class="navbar-brand" href="/">Party Quest</a>
+              <a id="logo" class="navbar-brand" href="/">Party Quest</a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
               <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a href="/">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="/">Home</a></li>
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Account <span class="caret"></span></a>
                   <% if @current_user %>
@@ -49,6 +48,16 @@
         </nav>
     </header>
     <%= yield %>
+    <footer>
+      <div class="navbar navbar-default">
+        <div class="container-fluid">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
   </div>
 </body>
 </html>
