@@ -14,8 +14,8 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'geocoder'
 gem 'react-rails'
 gem 'pg_search'
-gem 'paperclip'
-gem 'aws-sdk'
+gem 'paperclip', '~> 4.2.1'
+gem 'aws-sdk', '< 2.0'
 
 group :development, :test do
   gem 'byebug'
