@@ -9,24 +9,13 @@ class LocationsController < ApplicationController
   end
 
   def new
-    login_redirect 
+    login_redirect
     @campaign = Campaign.find_by(id: params[:campaign_id])
     if current_user?(@campaign.leader)
       @location = @campaign.build_location
     else
       redirect_to @campaign
     end
-    # ^^^ used the helper methods to simplify code
-    # if @current_user
-    #   @campaign = Campaign.find_by(id: params[:campaign_id])
-    #   if @current_user.id == @campaign.leader_id
-    #     @location = @campaign.build_location
-    #   else
-    #     redirect_to @campaign
-    #   end
-    # else
-    #   redirect_to '/login'
-    # end
   end
 
   def create

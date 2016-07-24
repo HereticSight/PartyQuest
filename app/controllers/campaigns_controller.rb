@@ -5,6 +5,7 @@ class CampaignsController < ApplicationController
   def show
     @campaign = Campaign.find_by(id: params[:id])
     @quests = @campaign.quests
+    @link = invite_url
   end
 
   def new
@@ -69,4 +70,7 @@ class CampaignsController < ApplicationController
     params.require(:campaign).permit(:name, :start_time, :end_time)
   end
 
+  def invite_url
+    "#{campaign_url(@campaign)}/invite?key=#{@campaign.invite_link}"
+  end
 end
