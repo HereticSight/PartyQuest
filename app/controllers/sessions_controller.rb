@@ -6,7 +6,6 @@ class SessionsController < ApplicationController
   def create
     if !logged_in?
       user = User.find_by(username: params[:session][:username])
-      # binding.pry
       if user && user.authenticate(params[:session][:password])
         log_in user
         redirect_to root_url

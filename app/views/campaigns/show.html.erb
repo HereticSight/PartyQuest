@@ -1,5 +1,7 @@
 <div class="main_container">
   <h1><%= @campaign.name %></h1>
+    <small>Start time: <%= @campaign.start_time.strftime("%B %d, %Y %I:%M %p") %></small><br>
+    <small>End time: <%= @campaign.end_time.strftime("%B %d, %Y %I:%M %p") %></small>
   <% if @current_user %>
     <% if @current_user.id == @campaign.leader_id %>
       <div class="leader_options">
@@ -22,7 +24,12 @@
          <li>
             Quest: <%= quest.name %><br>
             Description: <%= quest.description %><br>
-           Price Range: <%= quest.price_range %>
+            Price Range: <%= quest.price_range %><br>
+            <% if @current_user == @campaign.leader %>
+              <%= link_to "Delete this quest", campaign_quest_path(@campaign, quest),
+                method: :delete,
+                data: { confirm: "Are you sure you want to delete this quest?" } %>
+            <% end %>
          </li>
        <% end %>
       <% end %>

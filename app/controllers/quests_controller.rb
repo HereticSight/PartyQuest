@@ -25,7 +25,7 @@ class QuestsController < ApplicationController
   def destroy
     @campaign = Campaign.find_by(id: params[:campaign_id])
     login_redirect
-    if @current_user == @campaign.leader_id
+    if @current_user == @campaign.leader
       @quest = Quest.find_by(id: params[:id])
       @quest.destroy
       flash[:success] = "You've successfully removed a quest."
