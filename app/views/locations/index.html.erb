@@ -1,7 +1,8 @@
+<h1>All locations so far!</h1>
+
 <ul>
   <% @locations.each do |location| %>
-    <li><%= location.address %></li>
-    <li><%= location.city %></li>
-    <li><%= location.state %></li>
+    <li><%= location.address %><br>
+    <%= location.city %>, <%= location.state %></li>
   <% end %>
 </ul>
