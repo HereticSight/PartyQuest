@@ -34,15 +34,28 @@ class LocationsController < ApplicationController
     @location = Location.find_or_initialize_by(location_params)
     login_redirect
     if current_user?(@campaign.leader)
-      if @location.save
-        flash[:success] = "You've successfully created a location!"
-        @campaign.location = @location
-        @campaign.save
-        redirect_to new_campaign_quest_path(@campaign)
+      if @campaign.location.present?
+        if @location.save
+          flash[:success] = "You've successfully created a location!"
+          @campaign.location = @location
+          @campaign.save
+          redirect_to @campaign
+        else
+          @errors = @location.errors.full_messages
+          flash[:danger] = "Oops! We couldn't create your location!"
+          render 'new'
+        end
       else
-        @errors = @location.errors.full_messages
-        flash[:danger] = "Oops! We couldn't create your location!"
-        render 'new'
+        if @location.save
+          flash[:success] = "You've successfully created a location!"
+          @campaign.location = @location
+          @campaign.save
+          redirect_to new_campaign_quest_path(@campaign)
+        else
+          @errors = @location.errors.full_messages
+          flash[:danger] = "Oops! We couldn't create your location!"
+          render 'new'
+        end
       end
     else
       redirect_to @campaign
