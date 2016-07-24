@@ -1,7 +1,6 @@
 class CampaignsController < ApplicationController
 
   before_action :set_campaign, only: [:show, :update, :edit, :destroy]
-  before_action :current_user, only: [:create, :new, :show, :edit, :destroy]
 
   def show
     @campaign = Campaign.find_by(id: params[:id])
@@ -14,6 +13,7 @@ class CampaignsController < ApplicationController
   end
 
   def create
+    login_redirect
     @campaign = @current_user.created_campaigns.new(campaign_params)
     if @campaign.save
       flash[:success] = "You've successfully created your campaign!"
@@ -26,27 +26,32 @@ class CampaignsController < ApplicationController
   end
 
   def update
-    if @campaign.update_attributes(campaign_params)
-      flash[:success] = "Campaign updated!"
-      redirect_to @campaign
+    if current_user?(@campaign.leader)
+      if @campaign.update_attributes(campaign_params)
+        flash[:success] = "Campaign updated!"
+        redirect_to @campaign
+      else
+        @errors = @campaign.errors.full_messages
+        flash.now[:danger] = "Uh oh! Something went wrong!"
+        render 'campaigns/edit'
+      end
     else
-      @errors = @user.errors.full_messages
-      flash.now[:danger] = "Uh oh! Something went wrong!"
-      render 'campaigns/edit'
+      flash[:danger] = "You do not have access to this campaign."
+      redirect_to root_url
     end
   end
 
   def edit
-    if @current_user && @current_user.id != @campaign.leader_id
+    if !current_user?(@campaign.leader)
       flash[:danger] = "You do not have access to this campaign."
-      redirect_to campaigns_url
+      redirect_to root_url
     end
   end
 
   def destroy
-    if @current_user.id != @campaign.leader_id
+    if !current_user?(@campaign.leader)
       flash[:danger] = "You do not have access to this campaign."
-      redirect_to campaigns_url
+      redirect_to root_url
     else
       @campaign.destroy
       flash[:success] = "Campaign deleted."
@@ -61,7 +66,7 @@ class CampaignsController < ApplicationController
   end
 
   def campaign_params
-    params.require(:campaign).permit(:name)
+    params.require(:campaign).permit(:name, :start_time, :end_time)
   end
 
 end
