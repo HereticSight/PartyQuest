@@ -11,7 +11,7 @@
   <% end %>
   <% if current_user?(@campaign.leader) || @campaign.users.include?(@current_user) %>
     <div class="invitation_link">
-      <h2>Invitation Link:</h2> <%= @campaign.invite_link %>
+      <h2>Invitation Link:</h2> <%= @link %>
     </div>
   <% end %>
   <h2>Location</h2>

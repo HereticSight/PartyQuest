@@ -4,6 +4,8 @@ class Campaign < ActiveRecord::Base
   has_and_belongs_to_many :quests
   belongs_to :location
 
+  before_create :create_invitation_digest
+
   validates :name, presence: true, length: { in: 6..128 }
   validates :leader_id, presence: true
 
@@ -22,4 +24,8 @@ class Campaign < ActiveRecord::Base
     end
   end
 
+  private
+    def create_invitation_digest
+      self.invite_link = SecureRandom.urlsafe_base64
+    end
 end

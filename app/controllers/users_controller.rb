@@ -24,7 +24,7 @@ class UsersController < ApplicationController
       # session[:user_id] = @user.id
       log_in @user
       flash[:success] = "You've successfully created a PartyQuest account. Gear up and make a quest!"
-      redirect_to @user
+      redirect_back_or(root_url)
     else
       @errors = @user.errors.full_messages
       flash.now[:danger] = "Oops! We couldn't create your account!"
