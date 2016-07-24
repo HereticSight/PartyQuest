@@ -71,6 +71,6 @@ class CampaignsController < ApplicationController
   end
 
   def invite_url
-    "#{campaign_url(@campaign)}/invite/new?key=#{@campaign.invite_link}"
+    "#{new_campaign_invite_url(@campaign)}?key=#{@campaign.invite_link}"
   end
 end
