@@ -2,23 +2,23 @@
   <%= form_for([@campaign, @quest]) do |f| %>
     <%= render partial: 'shared/errors', locals: {errors: @errors} %>
 
-    <p>
+    <div class="form-group">
       <%= f.label :name %>
-      <%= f.text_field :name %>
-    </p>
+      <%= f.text_field :name, class: "form-control" %>
+    </div>
 
-    <p>
+    <div class="form-group">
       <%= f.label :description %>
-      <%= f.text_area :description, rows: 5, cols: 40, placeholder: "Describe your quest!" %>
-    </p>
+      <%= f.text_area :description, rows: 5, cols: 40, placeholder: "Describe your quest!", class: "form-control" %>
+    </div>
 
-    <p>
+    <div class="form-group">
       <%= f.label :price_range %>
-      <%= f.select :price_range, price_range %>
-    </p>
+      <%= f.select :price_range, price_range, class: "form-control" %>
+    </div>
 
-    <p>
-      <%= f.submit "Add this quest!" %>
-    </p>
+    <div class="form-group">
+      <%= f.submit "Add this quest!", class: "btn btn-default" %>
+    </div>
 
   <% end %>
