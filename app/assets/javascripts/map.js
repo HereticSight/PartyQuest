@@ -7,8 +7,8 @@ function initNewMap() {
 }
 
 function initIndexMap() {
-    var recentMarkerArray = []
-    var indexMap = new addLocationMap(document.getElementById( 'index_map' ), recentMarkerArray)
+  var recentMap = new indexMap(document.getElementById( 'index_map' ))
+  recentMap.init();
 }
 
 function updateFields(latLng) {
