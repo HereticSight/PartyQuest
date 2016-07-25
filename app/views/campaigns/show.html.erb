@@ -40,17 +40,13 @@
     <% if current_user?(@campaign.leader) %>
       <%= link_to "Add a quest to this campaign!", new_campaign_quest_path(@campaign) %>
     <% end %>
-  <h2>Guests</h2>
-  <div class="campaign_guests">
-    <% if @users %>
-      <%= @users.each do |user| %>
-        <div class="guest_info">
-          <%= link_to user.username, user_path(user) %>
-          <%= user.avatar %>
-        </div>
-      <% end %>
-    <% else %>
-      <h4>No guests currently.</h4>
+  <h2>Members</h2>
+  <div class="campaign_members">
+    <% @members.each do |member| %>
+      <div class="guest_info">
+        <%= link_to member.username, user_path(member) %>
+        <img src="<%= member.avatar %>" alt="avatar" />
+      </div>
     <% end %>
   </div>
 </div>
