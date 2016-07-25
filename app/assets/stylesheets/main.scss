@@ -51,9 +51,6 @@ body {
   height: 100%;
   width: 48%;
   padding: 5px;
-  #map {
-    height: 400px;
-  }
 }
 .right-container {
   display: inline-block;
@@ -85,4 +82,22 @@ a {
 
 .btn {
   background-color: #CD5360;
+}
+#map {
+  height: 400px;
+}
+
+.card {
+  padding: 5px;
+  margin: 10px auto;
+}
+
+.card-block {
+  width: 80%;
+  margin: 0px auto;
+}
+
+.form-holder {
+  width: 80%;
+  margin: 0px auto;
 }

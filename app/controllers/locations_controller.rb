@@ -20,7 +20,9 @@ class LocationsController < ApplicationController
 
   def create
     @campaign = Campaign.find_by(id: params[:campaign_id])
-    @location = Location.find_or_initialize_by(location_params)
+    binding.pry
+    @location = Location.find_by(address:location_params[:raw_address]) || Location.find_by(latitude: location_params[:latitude], longitude: location_params[:longitude]) || Location.new(location_params)
+
     login_redirect
     if current_user?(@campaign.leader)
       if @campaign.location.present?
@@ -54,6 +56,6 @@ class LocationsController < ApplicationController
   private
 
   def location_params
-    params.require(:location).permit(:latitude, :longitude, :address, :city, :state, :campaign_id)
+    params.require(:location).permit(:latitude, :longitude, :raw_address, :campaign_id)
   end
 end

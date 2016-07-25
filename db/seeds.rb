@@ -12,7 +12,7 @@ User.create!(first_name:"Mary",
             password:"P@ssword1",
             password_confirmation:"P@ssword1")
 
-Location.create!(address: "123 Fake St", city:"New York", state:"NY")
+Location.create!(raw_address: "48 Wall Street, New York, NY 10012")
 
 Quest.create!(name:"Eat 8 Jalapeno poppers", description:"Down those poppers", price_range:2)
 

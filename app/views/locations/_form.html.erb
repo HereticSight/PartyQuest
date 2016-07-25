@@ -1,22 +1,24 @@
 <%= form_for [@campaign, @location] do |f| %>
   <%= render partial: 'shared/errors', locals: {errors: @errors} %>
-  <p>
-    <%= f.label :address %>
-    <%= f.text_field :address %>
-  </p>
 
-  <p>
-    <%= f.label :city %>
-    <%= f.text_field :city %>
-  </p>
+  <h4>Please enter an address or click on your location on the map:</h4>
 
-  <p>
-    <%= f.label :state %>
-    <%= f.select :state, options_for_state, prompt: "State" %>
-  </p>
+  <%= f.hidden_field :latitude, class: "form-control" %>
+  <%= f.hidden_field :longitude, class: "form-control" %>
 
-  <p>
-    <%= f.submit %>
-  </p>
+  <fieldset class="form-group">
+    <%= f.label :raw_address, 'Address' %>
+    <%= f.text_field :raw_address, class: "form-control" %>
+    <small class="text-muted">You can also enter IP. Your IP is <%= request.ip %></small>
+  </fieldset>
+  <fieldset class="form-group">
+    <a href="#" id="find-on-map" class="btn btn-info btn-sm">Find on the map</a>
+  </fieldset>
 
+    <%= f.submit 'Add Location.', class: 'btn btn-primary' %>
 <% end %>
+<div class="card">
+  <div class="card-block">
+    <div id="map"></div>
+  </div>
+</div>
