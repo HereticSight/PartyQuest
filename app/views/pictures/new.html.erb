@@ -2,12 +2,12 @@
   <%= form_for([@campaign, @picture]) do |f| %>
     <%= render partial: 'shared/errors', locals: {errors: @errors} %>
 
-  <p>
-    <%= f.file_field :image %>
-  </p>
+  <div class="form-group">
+    <%= f.file_field :image, class: "form-control" %>
+  </div>
 
-    <p>
-      <%= f.submit "Add this picture!" %>
-    </p>
+    <div class="form-group">
+      <%= f.submit "Add this picture!", class: "btn btn-default" %>
+    </div>
 
   <% end %>
