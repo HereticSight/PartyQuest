@@ -3,8 +3,7 @@
 var markersArray = []
 
 function initMap() {
-  var mapDiv = document.getElementById( 'map' )
-  if ($( 'map' )) {
+  if ($( '#map' )) {
     var geocoder = new google.maps.Geocoder();
     var map = new google.maps.Map(document.getElementById( 'map' ), {
       center: {lat: 40.72902144999053, lng: -73.99128341814503},
@@ -27,6 +26,12 @@ function initMap() {
           placeMarkerAndPanTo(results[0].geometry.location, map);
         };
       });
+    });
+  } else if ($( '#index_map' )) {
+      var index_map = new google.maps.Map(document.getElementById( 'index_map' ), {
+        center: {lat: 40.72902144999053, lng: -73.99128341814503},
+        zoom: 12,
+        clickableIcons: false
     });
   };
 };
