@@ -1,3 +1,6 @@
+<% content_for :head do %>
+  <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyCZdeZHwH56fPgr1Ray067LcQi1U9SXzTs&callback=initNewMap&libraries=places", async:true, defer:true %>
+<% end %>
 <div class="form-holder">
   <h1>Create A Location!</h1>
 
