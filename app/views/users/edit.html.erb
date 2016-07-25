@@ -1,45 +1,47 @@
-<%= form_for @user do |f| %>
-  <%= render partial: 'shared/errors', locals: {errors: @errors} %>
+<div class="new-user-form">
 
-  <p>
-    <%= f.label :first_name %>
-    <%= f.text_field :first_name, value: @user.first_name %>
-  </p>
+  <h1>Edit your Profile</h1>
 
-  <p>
-    <%= f.label :last_name %>
-    <%= f.text_field :last_name, value: @user.last_name %>
-  </p>
+    <%= form_for @user do |f| %>
+      <%= render partial: 'shared/errors', locals: {errors: @errors} %>
 
-  <p>
-    <%= f.label :username %><br>
-    <%= f.text_field :username, value: @user.username %>
-  </p>
+      <div class="form-group">
+        <%= f.label :first_name %>
+        <%= f.text_field :first_name, value: @user.first_name, class: "form-control" %>
+      </div>
 
-  <p>
-    <%= f.label :email %>
-    <%= f.email_field :email, value: @user.email %>
-  </p>
+      <div class="form-group">
+        <%= f.label :last_name %>
+        <%= f.text_field :last_name, value: @user.last_name, class: "form-control" %>
+      </div>
 
-  <!-- add something here for profile_img??? -->
+      <div class="form-group">
+        <%= f.label :username %><br>
+        <%= f.text_field :username, value: @user.username, class: "form-control" %>
+      </div>
 
-  <p>
-    <%= f.label :bio %>
-    <%= f.text_area :bio, cols: 40, rows: 5, value: @user.bio %>
-  </p>
+      <div class="form-group">
+        <%= f.label :email %>
+        <%= f.email_field :email, value: @user.email, class: "form-control" %>
+      </div>
 
-  <p>
-    <%= f.label :state %>
-    <%= f.select :state, options_for_state, value: @user.state  %>
-  </p>
+      <div class="form-group">
+        <%= f.label :bio %>
+        <%= f.text_area :bio, cols: 40, rows: 5, value: @user.bio, class: "form-control" %>
+      </div>
 
-  <p>
-    <%= f.label :city %>
-    <%= f.text_field :city, value: @user.city %>
-  </p>
+      <div class="form-group">
+        <%= f.label :state %>
+        <%= f.select :state, options_for_state, {}, class: "form-control", value: @user.state  %>
+      </div>
 
-  <p>
-    <%= f.submit "Start your Quest!" %>
-  </p>
+      <div class="form-group">
+        <%= f.label :city %>
+        <%= f.text_field :city, value: @user.city, class: "form-control" %>
+      </div>
 
-<% end %>
+      <div class="form-group">
+        <%= f.submit "Edit", class: "btn btn-default" %>
+      </div>
+    <% end %>
+</div>
