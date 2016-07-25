@@ -10,7 +10,7 @@
        <% end %>
       </div>
     <% end %>
-    <% if !@location_campaigns.empty? || !@location_campaigns.empty? %>
+    <% unless @location_campaigns.empty? && @campaigns.empty? %>
       <h3 class="category">Related Campaigns</h3>
        <% @campaigns.each do |campaign| %>
           <li><%= link_to campaign.name, campaign_path(campaign) %></li>
