@@ -1,0 +1,10 @@
+<%= form_for([@campaign, @picture], multipart: true) do |f| %>
+  <%= render partial: 'shared/errors', locals: {errors: @errors} %>
+  <p>
+     <%= f.label :image %>
+     <%= f.file_field :image %>
+  </p>
+  <p>
+    <%= f.submit "Start your Quest!" %>
+  </p>
+<% end %>

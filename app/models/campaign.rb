@@ -1,4 +1,8 @@
 class Campaign < ActiveRecord::Base
+  include PgSearch
+  multisearchable against: [:name],
+                  if: :active_campaign?
+  has_many :pictures
   belongs_to :leader, class_name: "User", foreign_key: :leader_id
   has_and_belongs_to_many :users
   has_and_belongs_to_many :quests
@@ -22,6 +26,10 @@ class Campaign < ActiveRecord::Base
     if end_time.present? && end_time < start_time
       errors.add(:end_time, "Campaigns must end after your start date!")
     end
+  end
+
+  def active_campaign?
+    end_time > Time.now
   end
 
   private
