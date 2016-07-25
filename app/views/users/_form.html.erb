@@ -1,60 +1,58 @@
 <%= form_for(@user, multipart: true) do |f| %>
   <%= render partial: 'shared/errors', locals: {errors: @errors} %>
 
-  <p>
+  <div class="form-group">
     <%= f.label :first_name %>
-    <%= f.text_field :first_name %>
-  </p>
+    <%= f.text_field :first_name, class: "form-control" %>
+  </div>
 
-  <p>
+  <div class="form-group">
     <%= f.label :last_name %>
-    <%= f.text_field :last_name %>
-  </p>
+    <%= f.text_field :last_name, class: "form-control" %>
+  </div>
 
-  <p>
+  <div class="form-group">
     <%= f.label :username %><br>
-    <%= f.text_field :username %>
-  </p>
+    <%= f.text_field :username, class: "form-control" %>
+  </div>
 
-  <p>
+  <div class="form-group">
     <%= f.label :email %>
-    <%= f.email_field :email %>
-  </p>
+    <%= f.email_field :email, class: "form-control" %>
+  </div>
 
-  <p>
+  <div class="form-group">
     <%= f.label :password %><br>
-    <%= f.password_field :password %>
-  </p>
+    <%= f.password_field :password, class: "form-control" %>
+  </div>
 
-  <p>
+  <div class="form-group">
     <%= f.label :password_confirmation %><br>
-    <%= f.password_field :password_confirmation %>
-  </p>
+    <%= f.password_field :password_confirmation, class: "form-control" %>
+  </div>
 
-  <!-- add something here for profile_img??? -->
-
-  <p>
+  <div class="form-group">
     <%= f.label :bio %>
-    <%= f.text_area :bio, cols: 40, rows: 5, placeholder: "Tell us about yourself!" %>
-  </p>
+    <%= f.text_area :bio, cols: 40, rows: 5, placeholder: "Tell us about yourself!", class: "form-control" %>
+  </div>
 
-  <p>
+  <div class="form-group">
     <%= f.label :state %>
-    <%= f.select :state, options_for_state, prompt: "State" %>
-  </p>
+    <%= f.select :state, options_for_state, {}, class: "form-control" %>
+  </div>
 
-  <p>
+  <div class="form-group">
     <%= f.label :city %>
-    <%= f.text_field :city %>
-  </p>
+    <%= f.text_field :city, class: "form-control" %>
+  </div>
 
-  <p>
+  <div class="form-group">
     <%= f.label :avatar %>
-    <%= f.file_field :avatar %>
-  </p>
+    <%= f.file_field :avatar, class: "form-control" %>
+  </div>
 
-  <p>
-    <%= f.submit "Start your Quest!" %>
-  </p>
+  <div class="form-group">
+    <%= f.submit "Start your Quest!", class: "btn btn-default" %>
+  </div>
 
 <% end %>

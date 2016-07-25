@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get '/logout', to: 'sessions#destroy'
   get '/search', to: 'searches#query'
 
-  resources :users, path_names: {new: 'signup', create: 'signup'}
+  resources :users, path_names: {new: 'signup', create: 'signup'}, except: :index
 
   resources :campaigns, except: :index do
       resources :pictures, only: [:create, :new, :destroy]
