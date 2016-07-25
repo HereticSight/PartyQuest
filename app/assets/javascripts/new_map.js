@@ -1,27 +1,51 @@
 "use strict"
 
-var newMap = function(mapDiv,markerArray) {
-  this.map = new google.maps.Map(mapDiv , {
+var addLocationMap = function(mapDiv, markerArray) {
+  this.map = new google.maps.Map(mapDiv, {
     center: {lat: 40.72902144999053, lng: -73.99128341814503},
     zoom: 12,
-    clickableIcons: false
+    clickableIcons: false,
+    mapTypeControl: false,
+    zoomControl: false,
+    streetViewControl: false
   });
   this.geocoder =  new google.maps.Geocoder();
-  this.marker_array = markerArray
-  this.init();
+  this.markerArray = markerArray
 };
 
-newMap.prototype.init = function() {
-  this.map.addListener('click', function(e) {
-    placeMarkerAndPanTo(e.latLng, this.map);
+addLocationMap.prototype.init = function() {
+  this.addMarkerListener();
+  this.addFindListener();
+}
+
+addLocationMap.prototype.addMarkerListener = function() {
+  var that = this
+  that.map.addListener('click', function(e) {
+    that.placeMarkerAndPanTo(e.latLng);
     updateFields(e.latLng);
   });
+};
+
+addLocationMap.prototype.addFindListener = function () {
+  var that = this
   $( '#find-on-map' ).on('click', function(e) {
     e.preventDefault();
-    this.geocoder.geocode({ address: $('#location_raw_address').val()}, function(results, status) {
+    that.geocoder.geocode({ address: $('#location_raw_address').val()}, function(results, status) {
       if (status == google.maps.GeocoderStatus.OK) {
-        placeMarkerAndPanTo(results[0].geometry.location, map);
+        that.placeMarkerAndPanTo(results[0].geometry.location);
       };
     });
   });
 }
+
+addLocationMap.prototype.placeMarkerAndPanTo = function(latLng) {
+  while (this.markerArray.length) {
+    this.markerArray.pop().setMap(null)
+  }
+  var marker = new google.maps.Marker({
+    position: latLng,
+    map: this.map
+  })
+  this.map.panTo(latLng);
+  this.markerArray.push(marker);
+};
