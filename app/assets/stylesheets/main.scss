@@ -1,15 +1,20 @@
 body {
   font-family: Times;
-  background-color: RGBA(224, 144, 67, 0.68);
-  color: #bc3113;
+  // background-color: RGBA(224, 144, 67, 0.68);
+  color: white;
+  font-size: 150%;
+  // background-image: url('/images/nyc.jpg');
+  // background-size: cover;
 }
 
-input {
-  color: #CD5360;
-}
-
-textarea {
-  color: #CD5360;
+.darken {
+  background-image:
+    linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ),
+    url('/images/nyc.jpg');
+    background-size: cover;
 }
 
 .jumbotron {
