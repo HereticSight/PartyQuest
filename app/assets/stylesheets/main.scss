@@ -4,6 +4,30 @@ body {
   font-size: 150%;
 }
 
+a {
+  // color: #00FFFF;
+  color: darkgray;
+}
+
+input {
+  // color: #696969;
+  color: #708090;
+}
+
+ul.list-group {
+  color: #708090;
+}
+
+.well {
+  background: rgba(204, 204, 204, 0.5);
+}
+
+.form-control {
+  // color: #696969;
+  color: #708090;
+  // color: #FD5F00;
+}
+
 .darken {
   background-image:
     linear-gradient(
