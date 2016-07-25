@@ -27,7 +27,11 @@
          <li>
             Quest: <%= quest.name %><br>
             Description: <%= quest.description %><br>
-            Price Range: <%= quest.price_range %><br>
+            <% price = "" %>
+            <% quest.price_range.times do %>
+              <% price += "$" %>
+            <% end %>
+            Price Range: <%= price %><br>
             <% if @current_user == @campaign.leader %>
               <%= link_to "Delete this quest", campaign_quest_path(@campaign, quest),
                 method: :delete,
