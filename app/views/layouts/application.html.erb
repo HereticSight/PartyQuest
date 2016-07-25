@@ -21,6 +21,10 @@
               </button>
               <a id="logo" class="navbar-brand" href="/">Party Quest</a>
             </div>
+            <%= form_tag("/search", method: "get", class: "navbar-form navbar-left") do %>
+              <%= text_field_tag "search", nil, class: "form-control" %>
+              <%= submit_tag "Search", class: "btn btn-default" %>
+            <% end %>
             <div id="navbar" class="navbar-collapse collapse">
               <ul class="nav navbar-nav navbar-right">
                 <li><a href="/">Home</a></li>
@@ -40,14 +44,8 @@
                     </ul>
                   <% end %>
                 </li>
-                <li class="search_bar">
-                    <%= form_tag("/search", method: "get") do %>
-                    <%= text_field_tag(:search)%>
-                    <%= submit_tag("Search") %>
-                  <% end %>
-                </li>
-                </ul>
-              </div>
+              </ul>
+            </div>
           </div>
         </nav>
     </header>
