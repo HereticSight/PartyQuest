@@ -1,8 +1,7 @@
 body {
-  font-family: Dancing Script;
-  background-color: #286DA8;
-  color: white;
-  font-size: 200%;
+  font-family: Times;
+  background-color: RGBA(224, 144, 67, 0.68);
+  color: #bc3113;
 }
 
 input {
@@ -80,12 +79,12 @@ textarea {
 
 #logo {
   font-weight: 600;
-  font-size: 2em;
-  letter-spacing: -2px;
+  font-size: 2.4em;
 }
 
 .navbar {
-  font-size: 1.3em;
+  font-size: 1.1em;
+  font-weight: 600;
 }
 
 a {
@@ -100,7 +99,7 @@ a {
   background-color: #CD5360;
 }
 
-#map {
+#new_map {
   height: 400px;
 }
 
@@ -121,8 +120,4 @@ a {
 .form-holder {
   width: 80%;
   margin: 0px auto;
-}
-
-li.list-group-item {
-  color: #CD5360;
 }

@@ -2,7 +2,7 @@
   <% if @users.empty? && @campaigns.empty? && @location_campaigns.empty? %>
    <h2>Sorry, your search returned no results</h2>
   <% else %>
-   <% if !@users.empty? %>
+   <% unless @users.empty? %>
       <h3 class="category">Users</h3>
       <div>
         <% @users.each do |user| %>
