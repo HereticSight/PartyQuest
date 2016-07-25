@@ -1,5 +1,7 @@
 body {
   font-family: Dancing Script;
+  background-color: #286DA8;
+  color: white;
 }
 
 .navbar-toggle {
@@ -70,5 +72,17 @@ body {
 }
 
 .navbar {
-  font-size: 1.3em
+  font-size: 1.3em;
+}
+
+a {
+  color: #CD5360;
+}
+
+.well {
+  color: #CD5360;
+}
+
+.btn {
+  background-color: #CD5360;
 }
