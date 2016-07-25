@@ -47,11 +47,9 @@ ActiveRecord::Schema.define(version: 20160722013247) do
   add_index "campaigns_users", ["user_id"], name: "index_campaigns_users_on_user_id", using: :btree
 
   create_table "locations", force: :cascade do |t|
-    t.decimal  "latitude"
-    t.decimal  "longitude"
+    t.float    "latitude"
+    t.float    "longitude"
     t.text     "address"
-    t.string   "city"
-    t.string   "state"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
