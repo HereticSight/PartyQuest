@@ -11,10 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160725025437) do
+ActiveRecord::Schema.define(version: 20160725160054) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "pg_trgm"
+  enable_extension "fuzzystrmatch"
 
   create_table "campaigns", force: :cascade do |t|
     t.string   "name",        limit: 128, null: false
@@ -47,9 +49,11 @@ ActiveRecord::Schema.define(version: 20160725025437) do
   add_index "campaigns_users", ["user_id"], name: "index_campaigns_users_on_user_id", using: :btree
 
   create_table "locations", force: :cascade do |t|
-    t.float    "latitude"
-    t.float    "longitude"
+    t.decimal  "latitude"
+    t.decimal  "longitude"
     t.text     "address"
+    t.string   "city"
+    t.string   "state"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
