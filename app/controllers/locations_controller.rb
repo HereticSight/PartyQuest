@@ -20,7 +20,6 @@ class LocationsController < ApplicationController
 
   def create
     @campaign = Campaign.find_by(id: params[:campaign_id])
-    binding.pry
     @location = Location.find_by(address:location_params[:raw_address]) || Location.find_by(latitude: location_params[:latitude], longitude: location_params[:longitude]) || Location.new(location_params)
 
     login_redirect

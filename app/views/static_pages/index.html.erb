@@ -1,9 +1,28 @@
 <div id="index">
   <div class="left-container">
     <h2>Recent Campaigns</h2>
-    <div id="map"></div>
+    <div id="index_map"></div>
     <div class="jumbotron">
-
+      <% if @campaigns %>
+        <ul>
+          <% @campaigns.each do |campaign| %>
+            <li><table>
+                  <tr>
+                    <td><%= link_to campaign.name, campaign %></td>
+                  </tr>
+                  <tr>
+                    <td><%= link_to campaign.leader.username, campaign.leader %></td>
+                  </tr>
+                  <% if campaign.location %>
+                    <tr>
+                      <td><%= campaign.location.address %></td>
+                    </tr>
+                  <% end %>
+                </table>
+              </li>
+          <% end %>
+        </ul>
+      <% end %>
     </div>
   </div>
   <div class="right-container">

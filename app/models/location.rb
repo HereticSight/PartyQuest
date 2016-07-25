@@ -1,7 +1,7 @@
 class Location < ActiveRecord::Base
   attr_accessor :raw_address
   include PgSearch
-  multisearchable :against => [:latitude, :longitude, :address, :city, :state]
+  multisearchable :against => [:latitude, :longitude, :address]
 
   has_many :campaigns
 
