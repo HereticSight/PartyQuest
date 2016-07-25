@@ -25,6 +25,9 @@ class LocationsController < ApplicationController
     login_redirect
     if current_user?(@campaign.leader)
       if @campaign.location.present?
+        @campaign.location = nil
+        @campaign.save
+        @location = Location.find_by(address:location_params[:raw_address]) || Location.find_by(latitude: location_params[:latitude], longitude: location_params[:longitude]) || Location.new(location_params)
         if @location.save
           flash[:success] = "You've successfully created a location!"
           @campaign.location = @location
