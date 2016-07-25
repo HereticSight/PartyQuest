@@ -4,7 +4,10 @@ var addLocationMap = function(mapDiv, markerArray) {
   this.map = new google.maps.Map(mapDiv, {
     center: {lat: 40.72902144999053, lng: -73.99128341814503},
     zoom: 12,
-    clickableIcons: false
+    clickableIcons: false,
+    mapTypeControl: false,
+    zoomControl: false,
+    streetViewControl: false
   });
   this.geocoder =  new google.maps.Geocoder();
   this.markerArray = markerArray

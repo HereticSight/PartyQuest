@@ -6,8 +6,6 @@ function initMap() {
     var newMap = new addLocationMap(document.getElementById( 'new_map' ), markerArray)
     newMap.init();
   };
-  if ($('#index_map')) {
-  }
 }
 
 
