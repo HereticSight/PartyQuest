@@ -1,10 +1,31 @@
 body {
   font-family: Times;
-  // background-color: RGBA(224, 144, 67, 0.68);
   color: white;
   font-size: 150%;
-  // background-image: url('/images/nyc.jpg');
-  // background-size: cover;
+}
+
+a {
+  // color: #00FFFF;
+  color: darkgray;
+}
+
+input {
+  // color: #696969;
+  color: #708090;
+}
+
+ul.list-group {
+  color: #708090;
+}
+
+.well {
+  background: rgba(204, 204, 204, 0.5);
+}
+
+.form-control {
+  // color: #696969;
+  color: #708090;
+  // color: #FD5F00;
 }
 
 .darken {
@@ -15,13 +36,6 @@ body {
     ),
     url('/images/nyc.jpg');
     background-size: cover;
-}
-
-.jumbotron {
-  color: #333;
-  a {
-    color: #333;
-  }
 }
 
 .navbar-toggle {
@@ -69,18 +83,6 @@ body {
 .navbar {
   font-size: 1.1em;
   font-weight: 600;
-}
-
-a {
-  color: #CD5360;
-}
-
-.well {
-  color: #CD5360;
-}
-
-.btn {
-  background-color: #CD5360;
 }
 
 #new_map {
