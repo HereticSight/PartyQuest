@@ -12,7 +12,7 @@ class InvitesController < ApplicationController
       redirect_to login_url
     end
     if @current_user && @campaign && @campaign.invite_link == params[:key]
-      @campaign.users << @current_user
+      @campaign.users << @current_user unless @campaign.users.include?(@current_user)
       if @campaign.save
         redirect_to @campaign
       else

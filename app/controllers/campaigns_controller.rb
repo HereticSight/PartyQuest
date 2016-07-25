@@ -18,6 +18,8 @@ class CampaignsController < ApplicationController
     login_redirect
     @campaign = @current_user.created_campaigns.new(campaign_params)
     if @campaign.save
+      @campaign.users << @current_user
+      @campaign.save
       flash[:success] = "You've successfully created your campaign!"
       redirect_to new_campaign_location_path(@campaign)
     else
