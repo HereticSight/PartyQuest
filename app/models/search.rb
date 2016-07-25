@@ -1,11 +1,11 @@
 class Search
-  attr_reader :users, :campaigns, :locations, :search
+  attr_reader :users, :campaigns, :location_campaigns, :search
 
   def initialize(args)
-    @search = args.split(/\s+/)
+    @search = args.split("/\s+/")
     @users = []
     @campaigns = []
-    @locations = []
+    @location_campaigns = []
 
     user_results = PgSearch.multisearch(args).where(:searchable_type => "User")
     campaign_results = PgSearch.multisearch(args).where(:searchable_type => "Campaign")
@@ -16,11 +16,12 @@ class Search
     end
 
     campaign_results.each do |campaign|
-      @campaignss << Campaign.find_by(id: campaign.searchable_id)
+      @campaigns << Campaign.find_by(id: campaign.searchable_id)
     end
 
     location_results.each do |location|
-      @locations << Location.find_by(id: location.searchable_id)
+      matching_location = Location.find_by(id: location.searchable_id)
+      @location_campaigns << Campaign.find_by(location_id: matching_location.searchable_id)
     end
 
     if @search.length > 1
@@ -31,28 +32,29 @@ class Search
   end
 
   def users_search
-    @search.each do |term|
+    @search.each do |word|
       users = PgSearch.multisearch(term).where(:searchable_type => "User")
       users.each do |user|
-        @users << User.find_by(id: users.searchable_id)
+        @users << User.find_by(id: user.searchable_id)
       end
     end
   end
 
     def campaigns_search
-    @search.each do |term|
+    @search.each do |word|
       campaigns = PgSearch.multisearch(term).where(:searchable_type => "Campaign")
       campaigns.each do |campaign|
-        @campaigns << Recipe.find_by(id: campaigns.searchable_id)
+        @campaigns << Recipe.find_by(id: campaign.searchable_id)
       end
     end
   end
 
   def locations_search
-    @search.each do |term|
-      locationss = PgSearch.multisearch(term).where(:searchable_type => "Location")
+    @search.each do |word|
+      locations = PgSearch.multisearch(term).where(:searchable_type => "Location")
       locations.each do |location|
-          @locations << Location.find_by(id: locations.searchable_id)
+          matching_location = Location.find_by(id: location.searchable_id)
+          @location_campaigns << Campaign.find_by(location_id: matching_location.searchable_id)
       end
     end
   end

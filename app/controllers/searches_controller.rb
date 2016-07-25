@@ -2,9 +2,8 @@ class SearchesController < ApplicationController
   def query
       search = Search.new(params[:search])
       @campaigns = search.campaigns
-      @locations = search.locations
+      @location_campaigns = search.location_campaigns
       @users = search.users
-      @query = params[:search]
       render 'show'
   end
 end

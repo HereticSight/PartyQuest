@@ -1,6 +1,6 @@
 class Campaign < ActiveRecord::Base
   include PgSearch
-  multisearchable against: [:name],
+  multisearchable :against => [:name],
                   if: :active_campaign?
   has_many :pictures
   belongs_to :leader, class_name: "User", foreign_key: :leader_id
