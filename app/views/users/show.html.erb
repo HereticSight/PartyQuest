@@ -1,7 +1,7 @@
 <h1><%= @user.username %></h1>
   <div class="container">
     <div class="row">    
-      <div class="col-md-6">
+      <div class="col-md-4">
         <%= @user.first_name %> <%= @user.last_name %><br>
         <%= image_tag @user.avatar.url(:square) %>
       </div>
@@ -23,30 +23,40 @@
                 <a class="collapsed" role="button" data-toggle="collapse" href="#collapseListGroup1" aria-expanded="false" aria-controls="collapseListGroup1">Campaigns</a>
               </h4>
             </div>
-          <div id="collapseListGroup1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="collapseListGroupHeading1" aria-expanded="false" style="height: 0px;">
-            <ul class="list-group">
-              <% @user.campaigns.each do |campaign| %>
-                <li class="list-group-item"><%= link_to campaign.name, campaign %></li>
-              <% end %>
-            </ul>
+            <div id="collapseListGroup1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="collapseListGroupHeading1" aria-expanded="false" style="height: 0px;">
+              <ul class="list-group">
+                <% @user.campaigns.each do |campaign| %>
+                  <li class="list-group-item"><%= link_to campaign.name, campaign %></li>
+                <% end %>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
       <div class="col-md-6">
-        <h4>Quests undertaken:</h4>
-          <ul>
-            <% @user.quests.each do |quest| %>
-              <li>
-                <%= quest.name %><br>
-                Description: <%= quest.description %><br>
-                <% price = "" %>
-                <% quest.price_range.times do %>
-                  <% price += "$" %>
-                <% end %>
-                Price Range: <%= price %>
-              </li>
-            <% end %>
-          </ul>
+        <div class="panel-group" role="tablist">
+          <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="collapseListGroupHeading2">
+              <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" href="#collapseListGroup2" aria-expanded="false" aria-controls="collapseListGroup2">Quests Undertaken</a>
+              </h4>
+            </div>
+          <div id="collapseListGroup2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="collapseListGroupHeading2" aria-expanded="false" style="height: 0px;">
+            <ul class="list-group">
+              <% @user.quests.each do |quest| %>
+                <li class="list-group-item">
+                  <%= quest.name %><br>
+                  Description: <%= quest.description %><br>
+                  <% price = "" %>
+                  <% quest.price_range.times do %>
+                    <% price += "$" %>
+                  <% end %>
+                  Price Range: <%= price %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   </div>
