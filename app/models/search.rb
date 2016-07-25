@@ -1,0 +1,60 @@
+class Search
+  attr_reader :users, :campaigns, :locations, :search
+
+  def initialize(args)
+    @search = args.split(/\s+/)
+    @users = []
+    @campaigns = []
+    @locations = []
+
+    user_results = PgSearch.multisearch(args).where(:searchable_type => "User")
+    campaign_results = PgSearch.multisearch(args).where(:searchable_type => "Campaign")
+    location_results = PgSearch.multisearch(args).where(:searchable_type => "Location")
+
+    user_results.each do |user|
+      @users << User.find_by(id: user.searchable_id)
+    end
+
+    campaign_results.each do |campaign|
+      @campaignss << Campaign.find_by(id: campaign.searchable_id)
+    end
+
+    location_results.each do |location|
+      @locations << Location.find_by(id: location.searchable_id)
+    end
+
+    if @search.length > 1
+      self.users_search
+      self.campaigns_search
+      self.locations_search
+    end
+  end
+
+  def users_search
+    @search.each do |term|
+      users = PgSearch.multisearch(term).where(:searchable_type => "User")
+      users.each do |user|
+        @users << User.find_by(id: users.searchable_id)
+      end
+    end
+  end
+
+    def campaigns_search
+    @search.each do |term|
+      campaigns = PgSearch.multisearch(term).where(:searchable_type => "Campaign")
+      campaigns.each do |campaign|
+        @campaigns << Recipe.find_by(id: campaigns.searchable_id)
+      end
+    end
+  end
+
+  def locations_search
+    @search.each do |term|
+      locationss = PgSearch.multisearch(term).where(:searchable_type => "Location")
+      locations.each do |location|
+          @locations << Location.find_by(id: locations.searchable_id)
+      end
+    end
+  end
+
+end

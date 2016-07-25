@@ -1,0 +1,30 @@
+<% if !@users && !@campaigns && !@locations %>
+  <h2>Sorry, your search returned no results</h2>
+<% end %>
+
+<% if !@users.nil? %>
+  <h3 class="category">Users</h3>
+  <div>
+    <% @users.each do |user| %>
+      <li><%= link_to user.username, user_path(user) %></li>
+     <% end %>
+  </div>
+<% end %>
+
+<% if !@campaigns.nil? %>
+  <h3 class="category">Campaigns</h3>
+  <div>
+    <% @campaigns.each do |campaign| %>
+      <li><%= link_to campaign.name, campaign_path(campaign) %></li>
+   <% end %>
+  </div>
+<% end %>
+
+<% if !@locations.nil? %>
+  <h3 class="category">Locations</h3>
+  <div>
+    <% @locations.each do |location| %>
+      <li><%= link_to location.address, location_path(location) %></li>
+   <% end %>
+  </div>
+<% end %>

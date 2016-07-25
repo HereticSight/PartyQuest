@@ -1,0 +1,13 @@
+<h1>Add a new picture to your campaign!</h1>
+  <%= form_for([@campaign, @picture]) do |f| %>
+    <%= render partial: 'shared/errors', locals: {errors: @errors} %>
+
+  <p>
+    <%= f.file_field :image %>
+  </p>
+
+    <p>
+      <%= f.submit "Add this picture!" %>
+    </p>
+
+  <% end %>
