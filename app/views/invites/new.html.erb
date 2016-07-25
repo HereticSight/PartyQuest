@@ -1,7 +1,11 @@
-<h1><%= @campaign.leader.username %> has invited you to join their campaign!</h1>
+<div class="page-header">
+  <h1><%= @campaign.leader.username %> has invited you to join their campaign!</h1>
+</div>
 
-  <p>
-    Do you accept this challenge?
-  </p>
 
-  <%= link_to "Yes!", @link, method: "PATCH" %>
+  <h2>
+    <strong>Do you accept this request?</strong>
+  </h2>
+
+  <%= link_to "Yes!", @link, method: "PATCH", class: "btn btn-default" %>
+  <%= link_to "No", root_url, class: "btn btn-default" %>
