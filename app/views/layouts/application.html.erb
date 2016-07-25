@@ -41,6 +41,12 @@
                     </ul>
                   <% end %>
                 </li>
+                <li class="search_bar">
+                    <%= form_tag("/search", method: "get") do %>
+                    <%= text_field_tag(:search)%>
+                    <%= submit_tag("Search") %>
+                  <% end %>
+                </li>
                 </ul>
               </div>
           </div>
