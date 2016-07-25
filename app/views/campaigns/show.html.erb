@@ -19,7 +19,6 @@
   <% end %>
   <h2>Location</h2>
       <%= @campaign.location.address %><br>
-      <%= @campaign.location.city %>, <%= @campaign.location.state %><br>
       <% if current_user?(@campaign.leader) %>
         <%= link_to "Edit this location", new_campaign_location_path(@campaign) %>
       <% end %>
