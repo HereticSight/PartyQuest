@@ -6,6 +6,7 @@ class CampaignsController < ApplicationController
     @campaign = Campaign.find_by(id: params[:id])
     @quests = @campaign.quests
     @link = invite_url
+    @members = @campaign.users
   end
 
   def new

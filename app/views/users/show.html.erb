@@ -8,33 +8,41 @@
   </p>
 
   <p>
-    Contact: <%= @user.email %>
+    <h4>Contact:</h4> <%= @user.email %>
   </p>
 
   <p>
-    Bio: <%= @user.bio %>
+    <h4>Bio:</h4> <%= @user.bio %>
   </p>
 
   <p>
-    City: <%= @user.city %>
+    <h4>City:</h4> <%= @user.city %>
   </p>
 
   <p>
-    Campaigns:
+    <h4>Campaigns:</h4>
     <ul>
       <% @user.campaigns.each do |campaign| %>
-        <li><%= campaign.name %></li>
+        <li><%= link_to campaign.name, campaign %></li>
       <% end %>
     </ul>
   </p>
 
   <p>
-    Quests:<br>
-    <% @user.quests.each do |quest| %>
-      <%= quest.name %><br>
-      Description: <%= quest.description %><br>
-      Price Range: <%= quest.price_range %> moneys
-    <% end %>
+    <h4>Quests undertaken:</h4>
+      <ul>
+        <% @user.quests.each do |quest| %>
+          <li>
+            <%= quest.name %><br>
+            Description: <%= quest.description %><br>
+            <% price = "" %>
+            <% quest.price_range.times do %>
+              <% price += "$" %>
+            <% end %>
+            Price Range: <%= price %>
+          </li>
+        <% end %>
+      </ul>
   </p>
 
   <p>
