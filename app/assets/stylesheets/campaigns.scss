@@ -3,17 +3,15 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
         #carousel-custom {
-            margin: 20px auto;
-            width: 400px;
+            width: 200px;
         }
 
         #user-carousel-custom {
-            margin: 20px auto;
-            width: 400px;
+            width: 200px;
         }
 
         .carousel-inner > .item > img,
-        .carousel-inner > .item > a {
+        .carousel-inner > .item > active > a {
         margin: auto;
         }
 
