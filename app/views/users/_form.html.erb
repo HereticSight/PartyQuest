@@ -2,31 +2,31 @@
   <%= render partial: 'shared/errors', locals: {errors: @errors} %>
 
   <div class="row">
-    <div class="form-group col-sm-6">
+    <div class="form-group col-md-6">
       <%= f.label :first_name %>
       <%= f.text_field :first_name, class: "form-control" %>
     </div>
-    <div class="form-group col-sm-6">
+    <div class="form-group col-md-6">
       <%= f.label :last_name %>
       <%= f.text_field :last_name, class: "form-control" %>
     </div>
   </div>
   <div class="row">
-    <div class="form-group col-sm-6">
+    <div class="form-group col-md-6">
       <%= f.label :username %><br>
       <%= f.text_field :username, class: "form-control" %>
     </div>
-    <div class="form-group col-sm-6">
+    <div class="form-group col-md-6">
       <%= f.label :email %>
       <%= f.email_field :email, class: "form-control" %>
     </div>
   </div>
   <div class="row">
-    <div class="form-group col-sm-6">
+    <div class="form-group col-md-6">
       <%= f.label :password %><br>
       <%= f.password_field :password, class: "form-control" %>
     </div>
-    <div class="form-group col-sm-6">
+    <div class="form-group col-md-6">
       <%= f.label :password_confirmation %><br>
       <%= f.password_field :password_confirmation, class: "form-control" %>
     </div>
@@ -38,11 +38,11 @@
   </div>
 
   <div class="row">
-    <div class="form-group col-sm-6">
+    <div class="form-group col-md-6">
       <%= f.label :city %>
       <%= f.text_field :city, class: "form-control" %>
     </div>
-    <div class="form-group col-sm-6">
+    <div class="form-group col-md-6">
       <%= f.label :state %>
       <%= f.select :state, options_for_state, {}, class: "form-control" %>
     </div>
