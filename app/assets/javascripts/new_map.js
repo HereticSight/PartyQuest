@@ -1,9 +1,31 @@
 "use strict"
 
 var addLocationMap = function(mapDiv, markerArray) {
+  var styleArray = [
+    {
+      featureType: "all",
+      stylers: [
+        { saturation: -80 }
+      ]
+    },{
+      featureType: "road.arterial",
+      elementType: "geometry",
+      stylers: [
+        { hue: "#00ffee" },
+        { saturation: 50 }
+      ]
+    },{
+      featureType: "water",
+      elementType: "all",
+      stylers: [
+        { hue: "#EBE6C9" }
+      ]
+    }
+  ];
   this.map = new google.maps.Map(mapDiv, {
     center: {lat: 40.72902144999053, lng: -73.99128341814503},
     zoom: 12,
+    styles: styleArray,
     clickableIcons: false,
     mapTypeControl: false,
     zoomControl: false,

@@ -8,48 +8,48 @@
 body {
   font-family: Times;
   font-size: 150%;
-  color: #F9BE02;
+  color: #F2ECD6;
   // -webkit-text-stroke-width: .1px;
   // -webkit-text-stroke-color: white;
 }
 
-.brightCoral {
-  color: #F53240;
-}
-
-.aquamarine {
-  color: #02C8A7;
-}
-
 .well {
-  background: rgba(204, 204, 204, 0.5);
+  background: rgba(242, 236, 214, 0.5);
 }
 
 .darken {
   background-image:
     linear-gradient(
-      rgba(0, 0, 0, 0.5),
-      rgba(0, 0, 0, 0.5)
+      rgba(0, 0, 0, 0.9),
+      rgba(0, 0, 0, 0.3)
     ),
-    image-url('296H.jpg');
+    image-url('nVripdG.jpg');
     background-size: cover;
     background-attachment: fixed;
     background-repeat: no-repeat;
 }
 
 .btn {
-  color: #F9BE02;
-  background-color: #F53240;
+  color: #D8BF8A;
+  background-color: #8D7648;
   &:hover {
-    color: #FDDE7A;
-    background-color: #A9010D;
+    color: #dca441;
+    background-color: #4a3716;
   }
 }
 
+.panel-default {
+  .panel-heading {
 
+  }
+}
 
 .list-group-item {
-  background-color: #F53240;
+  color: #8D7648;
+  background-color: rgba(216, 191, 138, 0.5);
+  a {
+    color: #8D7648;
+  }
 }
 
 .navbar-toggle {
@@ -63,7 +63,6 @@ body {
   .icon-bar {
     width: 22px;
     transition: all 0.2s;
-    background-color: #F53240;
   }
   .top-bar {
     transform: rotate(45deg);
@@ -93,33 +92,57 @@ body {
 .navbar-default {
   .navbar-toggle {
     .icon-bar {
-    background-color: #F53240;
+    background-color: #8D7648;
     }
   }
   .navbar-nav {
-    color: #F53240;
     li {
-      a:hover {
-        color: #A9010D;
+      a {
+        color: #8D7648;
+      }
+        &:hover {
+          color: #A9010D;
+        }
+    }
+  }
+  .open {
+    a {
+      &:focus {
+      background-color: #D8BF8A;
+      color: #BA2A1D;
+      }
+      &:hover {
+        color: #BA2A1D;
       }
     }
   }
 }
 
-.navbar-default .navbar-nav li a {
-  color: #F53240;
+.navbar-default .navbar-nav > .open > a:focus {
+    background-color: #D8BF8A;
+}
+
+.dropdown-menu {
+  background-color: #D8BF8A;
 }
 
 #logo {
   font-weight: 600;
   font-size: 2.4em;
-  color: #F53240;
+  color: #8D7648;
+  &:hover {
+    color: #4a3716;
+  }
 }
 
 .navbar {
   font-size: 1.1em;
   font-weight: 600;
-  background-color: #87CEFA;
+  background-color: #D8BF8A;
+}
+
+a {
+  color: #F1E9D4;
 }
 
 #new_map {
