@@ -57,7 +57,7 @@
             <span class='glyphicon glyphicon-chevron-left'></span>
          </a>
          <a class='right carousel-control' href='#carousel-custom' data-slide='next'>
-           <span class='glyphicon glyphicon-chevron-right'></span>
+           <span class="glyphicon glyphicon-chevron-right"></span>
         </a>
       </div>
     <% end %>
@@ -87,12 +87,34 @@
       <%= link_to "Add a quest to this campaign!", new_campaign_quest_path(@campaign) %>
     <% end %>
   <h2>Members</h2>
-  <div class="campaign_members">
-    <% @members.each do |member| %>
-      <div class="guest_info">
-        <%= link_to member.username, user_path(member) %>
-        <img src="<%= member.avatar %>" alt="avatar" />
+    <% unless @members.empty? %>
+      <div id='user-carousel-custom' class='carousel slide' data-ride='carousel'>
+        <div class='carousel-outer'>
+              <!-- Wrapper for slides -->
+            <div class='carousel-inner'>
+              <% @members.each_with_index do |member, index| %>
+                <% if index == 0 %>
+                  <div class='item active'>
+                    <%= link_to member.username, user_path(member) %>
+                    <img src="<%= member.avatar %>" alt="avatar" />
+                  </div>
+                <% else %>
+                  <div class="item">
+                    <%= link_to member.username, user_path(member) %>
+                    <img src="<%= member.avatar %>" alt="avatar" />
+                  </div>
+                <% end %>
+              <% end %>
+            </div>
+         </div>
+
+        <!-- Carousel nav -->
+         <a class='left carousel-control' href='#user-carousel-custom' data-slide='prev'>
+            <span class='glyphicon-chevron-left'></span>
+         </a>
+         <a class='right carousel-control' href='#user-carousel-custom' data-slide='next'>
+           <span class="glyphicon-chevron-right"></span>
+        </a>
       </div>
     <% end %>
-  </div>
 </div>
