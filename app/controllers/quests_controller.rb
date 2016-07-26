@@ -1,6 +1,6 @@
 class QuestsController < ApplicationController
   def new
-    @campaign = Campaign.find_by(id: params[:campaign_id])
+    @campaign = Campaign.find_by(id: params[:campaign_id]) || not_found
     redirect_to @campaign unless @campaign.leader == @current_user
     @quest = Quest.new
     login_redirect

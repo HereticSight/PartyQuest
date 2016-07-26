@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   # end
 
   def show
-    @user = User.find_by(id: params[:id])
+    @user = User.find_by(id: params[:id]) || not_found
     if @user == nil
       redirect_to users_url
     end

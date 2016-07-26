@@ -3,7 +3,7 @@ class CampaignsController < ApplicationController
   before_action :set_campaign, only: [:show, :update, :edit, :destroy]
 
   def show
-    @campaign = Campaign.find_by(id: params[:id])
+    @campaign = Campaign.find_by(id: params[:id]) || not_found
     @quests = @campaign.quests
     @link = invite_url
     @members = @campaign.users
