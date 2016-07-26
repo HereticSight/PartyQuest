@@ -1,7 +1,3 @@
-<% content_for :head do %>
-  <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyCZdeZHwH56fPgr1Ray067LcQi1U9SXzTs&callback=initIndexMap&libraries=places", async:true, defer:true %>
-<% end %>
-
 <%= javascript_tag do %>
   var campaigns = <%= @campaigns.to_json.html_safe %>
   var locations = <%= @campaigns.map { |campaign| campaign.location }.to_json.html_safe %>
@@ -38,3 +34,5 @@
     </div>
   </div>
 </div>
+
+<%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyCZdeZHwH56fPgr1Ray067LcQi1U9SXzTs&callback=initIndexMap&libraries=places", async:true, defer:true %>
