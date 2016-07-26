@@ -36,8 +36,13 @@ li.quests-list {
       rgba(0, 0, 0, 0.5),
       rgba(0, 0, 0, 0.5)
     ),
-    url('/images/nyc.jpg');
+    url('/images/296H.jpg');
     background-size: cover;
+}
+
+li.dim {
+  // background-color: white;
+  background: rgba(204, 204, 204, 0.5);
 }
 
 .navbar-toggle {
