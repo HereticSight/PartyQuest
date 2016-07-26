@@ -5,7 +5,7 @@ class CampaignsController < ApplicationController
   def show
     @campaign = Campaign.find_by(id: params[:id]) || not_found
     @quests = @campaign.quests
-    if @quests.empty?
+    if @campaign.location == nil
       if logged_in?
         redirect_to new_campaign_location_url(@campaign)
         flash[:danger] = "Add a location to your campaign first"
