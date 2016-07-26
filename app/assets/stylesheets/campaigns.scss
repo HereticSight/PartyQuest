@@ -2,12 +2,16 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.image-link {
+    text-align: center;
+}
+
 #carousel-custom {
-    width: 200px;
+    width: 40%;
 }
 
 #user-carousel-custom {
-    width: 200px;
+    width: 40%;
 }
 
 .carousel-inner > .item > img,
