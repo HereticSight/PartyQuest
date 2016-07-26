@@ -5,12 +5,12 @@ class LocationsController < ApplicationController
   end
 
   def show
-    @location = Location.find_by(id: params[:id])
+    @location = Location.find_by(id: params[:id]) || not_found
   end
 
   def new
     login_redirect
-    @campaign = Campaign.find_by(id: params[:campaign_id])
+    @campaign = Campaign.find_by(id: params[:campaign_id]) || not_found
     if current_user?(@campaign.leader)
       @location = @campaign.build_location
     else

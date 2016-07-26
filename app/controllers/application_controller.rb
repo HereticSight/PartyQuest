@@ -33,4 +33,8 @@ class ApplicationController < ActionController::Base
   def store_location
     session[:forwarding_url] = request.original_url if request.get?
   end
+
+  def not_found
+    raise ActionController::RoutingError.new('Not Found')
+  end
 end

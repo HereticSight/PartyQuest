@@ -1,6 +1,6 @@
 class InvitesController < ApplicationController
   def new
-    @campaign = Campaign.find_by(id: params[:campaign_id])
+    @campaign = Campaign.find_by(id: params[:campaign_id]) || not_found
     @key = params[:key]
     @link = "#{campaign_invites_url(@campaign)}?key=#{@key}"
   end
