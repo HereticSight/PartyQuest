@@ -40,6 +40,10 @@ body {
 .btn {
   color: #F9BE02;
   background-color: #F53240;
+  &:hover {
+    color: #FDDE7A;
+    background-color: #A9010D;
+  }
 }
 
 
@@ -59,6 +63,7 @@ body {
   .icon-bar {
     width: 22px;
     transition: all 0.2s;
+    background-color: #F53240;
   }
   .top-bar {
     transform: rotate(45deg);
@@ -83,6 +88,26 @@ body {
   .bottom-bar {
     transform: rotate(0);
   }
+}
+
+.navbar-default {
+  .navbar-toggle {
+    .icon-bar {
+    background-color: #F53240;
+    }
+  }
+  .navbar-nav {
+    color: #F53240;
+    li {
+      a:hover {
+        color: #A9010D;
+      }
+    }
+  }
+}
+
+.navbar-default .navbar-nav li a {
+  color: #F53240;
 }
 
 #logo {

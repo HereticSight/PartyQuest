@@ -27,7 +27,7 @@
               <li>
                 <%= link_to campaign.name, campaign %><br>
                 <%= link_to campaign.leader.username, campaign.leader %><br>
-                <%= campaign.location.address if campaign.location %>
+                <%= link_to campaign.location.address, '#', class: 'info_link' if campaign.location %>
               </li>
             <% end %>
           </ul>
@@ -37,4 +37,4 @@
   </div>
 </div>
 
-<%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyCZdeZHwH56fPgr1Ray067LcQi1U9SXzTs&callback=initIndexMap&libraries=places", async:true, defer:true %>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZdeZHwH56fPgr1Ray067LcQi1U9SXzTs&callback=initIndexMap&libraries=places" async defer></script>
