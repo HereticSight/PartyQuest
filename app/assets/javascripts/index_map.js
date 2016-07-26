@@ -1,6 +1,7 @@
 "use strict"
 
 var indexMap = function(mapDiv) {
+  this.geocoder =  new google.maps.Geocoder();
   this.map = new google.maps.Map(mapDiv, {
     center: {lat: 40.72902144999053, lng: -73.99128341814503},
     zoom: 12,
@@ -9,26 +10,26 @@ var indexMap = function(mapDiv) {
     zoomControl: false,
     streetViewControl: false
   });
-  this.geocoder =  new google.maps.Geocoder();
   this.markerArray = []
 };
 
 indexMap.prototype.init = function() {
   this.addMarkersToMap();
-  // this.addFindListener();
+  this.addSnapToListener();
 }
 
-indexMap.prototype.addFindListener = function () {
+indexMap.prototype.addSnapToListener = function () {
   var that = this
-  $( '.snap_to_map' ).on('click', function(e) {
+  $( '.info_link' ).on('click', function(e) {
     e.preventDefault();
-    that.geocoder.geocode({ address: $('#location_raw_address').val()}, function(results, status) {
+    var address = $( this ).text();
+    that.geocoder.geocode({address: address}, function(results, status) {
       if (status == google.maps.GeocoderStatus.OK) {
-        that.map.PanTo(results[0].geometry.location);
+        that.map.panTo(results[0].geometry.location);
       };
     });
   });
-}
+};
 
 indexMap.prototype.addMarkersToMap = function () {
   var that = this
