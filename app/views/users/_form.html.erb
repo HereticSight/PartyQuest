@@ -1,34 +1,35 @@
 <%= form_for(@user, multipart: true) do |f| %>
   <%= render partial: 'shared/errors', locals: {errors: @errors} %>
 
-  <div class="form-group">
-    <%= f.label :first_name %>
-    <%= f.text_field :first_name, class: "form-control" %>
+  <div class="row">
+    <div class="form-group col-sm-6">
+      <%= f.label :first_name %>
+      <%= f.text_field :first_name, class: "form-control" %>
+    </div>
+    <div class="form-group col-sm-6">
+      <%= f.label :last_name %>
+      <%= f.text_field :last_name, class: "form-control" %>
+    </div>
   </div>
-
-  <div class="form-group">
-    <%= f.label :last_name %>
-    <%= f.text_field :last_name, class: "form-control" %>
+  <div class="row">
+    <div class="form-group col-sm-6">
+      <%= f.label :username %><br>
+      <%= f.text_field :username, class: "form-control" %>
+    </div>
+    <div class="form-group col-sm-6">
+      <%= f.label :email %>
+      <%= f.email_field :email, class: "form-control" %>
+    </div>
   </div>
-
-  <div class="form-group">
-    <%= f.label :username %><br>
-    <%= f.text_field :username, class: "form-control" %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :email %>
-    <%= f.email_field :email, class: "form-control" %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :password %><br>
-    <%= f.password_field :password, class: "form-control" %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :password_confirmation %><br>
-    <%= f.password_field :password_confirmation, class: "form-control" %>
+  <div class="row">
+    <div class="form-group col-sm-6">
+      <%= f.label :password %><br>
+      <%= f.password_field :password, class: "form-control" %>
+    </div>
+    <div class="form-group col-sm-6">
+      <%= f.label :password_confirmation %><br>
+      <%= f.password_field :password_confirmation, class: "form-control" %>
+    </div>
   </div>
 
   <div class="form-group">
@@ -36,14 +37,15 @@
     <%= f.text_area :bio, cols: 40, rows: 5, placeholder: "Tell us about yourself!", class: "form-control" %>
   </div>
 
-  <div class="form-group">
-    <%= f.label :state %>
-    <%= f.select :state, options_for_state, {}, class: "form-control" %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :city %>
-    <%= f.text_field :city, class: "form-control" %>
+  <div class="row">
+    <div class="form-group col-sm-6">
+      <%= f.label :city %>
+      <%= f.text_field :city, class: "form-control" %>
+    </div>
+    <div class="form-group col-sm-6">
+      <%= f.label :state %>
+      <%= f.select :state, options_for_state, {}, class: "form-control" %>
+    </div>
   </div>
 
   <div class="form-group">

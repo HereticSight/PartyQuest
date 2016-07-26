@@ -1,22 +1,23 @@
 <%= form_for @campaign do |f| %>
   <%= render partial: 'shared/errors', locals: {errors: @errors} %>
-  <p>
+  <div class="form-group">
     <%= f.label :name %>
-    <%= f.text_field :name %>
-  </p>
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
 
-  <p>
-    <%= f.label :start_time %>
-    <%= f.datetime_local_field :start_time %>
-  </p>
+  <div class="row">
+    <div class="form-group col-xs-6">
+      <%= f.label :start_time %>
+      <%= f.datetime_local_field :start_time, class: "form-control" %>
+    </div>
+    <div class="form-group col-xs-6">
+      <%= f.label :end_time %>
+      <%= f.datetime_local_field :end_time, class: "form-control" %>
+    </div>
+  </div>
 
-  <p>
-    <%= f.label :end_time %>
-    <%= f.datetime_local_field :end_time %>
-  </p>
-
-  <p>
-    <%= f.submit %>
-  </p>
+  <div class="form-group">
+    <%= f.submit class: "btn btn-default" %>
+  </div>
 
 <% end %>

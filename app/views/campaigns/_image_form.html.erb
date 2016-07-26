@@ -1,10 +1,12 @@
 <%= form_for([@campaign, @picture], multipart: true) do |f| %>
   <%= render partial: 'shared/errors', locals: {errors: @errors} %>
-  <p>
+  <div class="form-group">
      <%= f.label :image %>
-     <%= f.file_field :image %>
-  </p>
-  <p>
-    <%= f.submit "Start your Quest!" %>
-  </p>
+     <%= f.file_field :image, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit "Start your Quest!", class: "btn btn-default" %>
+  </div>
+
 <% end %>
