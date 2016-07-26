@@ -1,23 +1,20 @@
+// THIS IS THE COLOR SCHEME
+// USE ONLY THESE COLORS
+// Sky: color: #87CEFA
+// Bright Coral: color: #F53240
+// Golden: color: #F9BE02
+// Aquamarine: color: #02C8A7
+
 body {
   font-family: Times;
-  color: white;
   font-size: 150%;
+  color: #F9BE02;
+  // -webkit-text-stroke-width: .1px;
+  // -webkit-text-stroke-color: white;
 }
 
-a {
-  color: #CD5360;
-}
-
-.btn {
-  background-color: #CD5360;
-}
-
-ul.list-group {
-  color: white;
-}
-
-li.quests-list {
-  color: #708090;
+.aquamarine {
+  color: #02C8A7;
 }
 
 .well {
@@ -36,13 +33,17 @@ li.quests-list {
     background-repeat: no-repeat;
 }
 
-@media only screen and (min-width: 320px) and (max-width: 480px) {
-
+.btn {
+  color: #F9BE02;
+  background-color: #F53240;
 }
 
-li.dim {
-  // background-color: white;
-  background: rgba(204, 204, 204, 0.5);
+a {
+  color: #87CEFA;
+}
+
+.list-group-item {
+  background-color: #F53240;
 }
 
 .navbar-toggle {
@@ -85,11 +86,13 @@ li.dim {
 #logo {
   font-weight: 600;
   font-size: 2.4em;
+  color: #02C8A7;
 }
 
 .navbar {
   font-size: 1.1em;
   font-weight: 600;
+  background-color: #87CEFA;
 }
 
 #new_map {
