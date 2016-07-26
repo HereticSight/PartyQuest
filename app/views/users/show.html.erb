@@ -26,7 +26,7 @@
             <div id="collapseListGroup1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="collapseListGroupHeading1" aria-expanded="false" style="height: 0px;">
               <ul class="list-group">
                 <% @user.campaigns.each do |campaign| %>
-                  <li class="list-group-item dim"><%= link_to campaign.name, campaign %></li>
+                  <li class="list-group-item"><%= link_to campaign.name, campaign %></li>
                 <% end %>
               </ul>
             </div>
