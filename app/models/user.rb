@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   include PgSearch
   multisearchable :against =>[:username, :bio, :city, :state, :first_name, :last_name]
-  has_many :created_campaigns, foreign_key: :leader_id, class_name: "Campaign"
+  has_many :created_campaigns, foreign_key: :leader_id, class_name: "Campaign", dependent: :destroy
   has_and_belongs_to_many :campaigns
   has_many :quests, through: :campaigns
   has_many :visited_locations, through: :campaigns, source: :location
