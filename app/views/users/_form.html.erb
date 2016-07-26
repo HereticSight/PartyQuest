@@ -13,21 +13,21 @@
   </div>
   <div class="row">
     <div class="form-group col-md-6">
-      <%= f.label :username %><br>
+      <%= f.label :username %> <small>*required</small><br>
       <%= f.text_field :username, class: "form-control brightCoral" %>
     </div>
     <div class="form-group col-md-6">
-      <%= f.label :email %>
+      <%= f.label :email %> <small>*required</small>
       <%= f.email_field :email, class: "form-control brightCoral" %>
     </div>
   </div>
   <div class="row">
     <div class="form-group col-md-6">
-      <%= f.label :password %><br>
+      <%= f.label :password %> <small>*required</small><br>
       <%= f.password_field :password, class: "form-control brightCoral" %>
     </div>
     <div class="form-group col-md-6">
-      <%= f.label :password_confirmation %><br>
+      <%= f.label :password_confirmation %> <small>*required</small><br>
       <%= f.password_field :password_confirmation, class: "form-control brightCoral" %>
     </div>
   </div>

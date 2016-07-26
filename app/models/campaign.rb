@@ -10,7 +10,7 @@ class Campaign < ActiveRecord::Base
   before_create :create_invitation_digest
 
   validates :name, presence: true, length: { in: 6..128 }
-  validates :leader_id, presence: true
+  validates :leader_id, :start_time, :end_time, presence: true
 
   validate :start_date_in_future
   validate :end_date_after_start_date
