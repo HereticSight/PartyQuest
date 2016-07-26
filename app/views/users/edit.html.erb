@@ -1,28 +1,29 @@
-<div class="new-user-form">
+<!-- <div class="new-user-form"> -->
 
   <h1>Edit your Profile</h1>
 
     <%= form_for @user do |f| %>
       <%= render partial: 'shared/errors', locals: {errors: @errors} %>
 
-      <div class="form-group">
-        <%= f.label :first_name %>
-        <%= f.text_field :first_name, value: @user.first_name, class: "form-control" %>
+      <div class="row">
+        <div class="form-group col-sm-6">
+          <%= f.label :first_name %>
+          <%= f.text_field :first_name, class: "form-control" %>
+        </div>
+        <div class="form-group col-sm-6">
+          <%= f.label :last_name %>
+          <%= f.text_field :last_name, class: "form-control" %>
+        </div>
       </div>
-
-      <div class="form-group">
-        <%= f.label :last_name %>
-        <%= f.text_field :last_name, value: @user.last_name, class: "form-control" %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :username %><br>
-        <%= f.text_field :username, value: @user.username, class: "form-control" %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :email %>
-        <%= f.email_field :email, value: @user.email, class: "form-control" %>
+      <div class="row">
+        <div class="form-group col-sm-6">
+          <%= f.label :username %><br>
+          <%= f.text_field :username, class: "form-control" %>
+        </div>
+        <div class="form-group col-sm-6">
+          <%= f.label :email %>
+          <%= f.email_field :email, class: "form-control" %>
+        </div>
       </div>
 
       <div class="form-group">
@@ -30,18 +31,24 @@
         <%= f.text_area :bio, cols: 40, rows: 5, value: @user.bio, class: "form-control" %>
       </div>
 
-      <div class="form-group">
-        <%= f.label :state %>
-        <%= f.select :state, options_for_state, {}, class: "form-control", value: @user.state  %>
+      <div class="row">
+        <div class="form-group col-sm-6">
+          <%= f.label :city %>
+          <%= f.text_field :city, class: "form-control" %>
+        </div>
+        <div class="form-group col-sm-6">
+          <%= f.label :state %>
+          <%= f.select :state, options_for_state, {}, class: "form-control" %>
+        </div>
       </div>
 
       <div class="form-group">
-        <%= f.label :city %>
-        <%= f.text_field :city, value: @user.city, class: "form-control" %>
+        <%= f.label :avatar %>
+        <%= f.file_field :avatar, class: "form-control" %>
       </div>
 
       <div class="form-group">
         <%= f.submit "Edit", class: "btn btn-default" %>
       </div>
     <% end %>
-</div>
+<!-- </div> -->
