@@ -20,6 +20,7 @@ gem 'dotenv-rails', :groups => [:development, :test]
 gem 'puma'
 
 group :development, :test do
+  gem 'database_cleaner'
   gem 'byebug'
   gem 'pry-rails'
   gem 'pry-byebug'
