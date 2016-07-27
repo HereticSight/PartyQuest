@@ -6,7 +6,12 @@ class QuestsController < ApplicationController
       flash[:danger] = "This campaign doesn't exist!"
     else
       redirect_to @campaign unless @campaign.leader == @current_user
-      @quest = Quest.new
+      if request.xhr?
+        @quest = Quest.new
+        render partial: "quests/form", locals: { campaign: @campaign, quest: @quest } 
+      else
+        @quest = Quest.new
+      end
     end
     login_redirect
   end
@@ -16,14 +21,21 @@ class QuestsController < ApplicationController
     @campaign = Campaign.find_by(id: params[:campaign_id])
     redirect_to @campaign unless @campaign.leader == @current_user
     @quest = @campaign.quests.build(quest_params)
-    if @quest.save
-      @campaign.quests << @quest
-      flash[:success] = "You've added a new quest! Add some more or gear up and get out there!"
-      redirect_to @campaign
+    if request.xhr?
+      if @quest.save
+        @campaign.quests << @quest
+        render partial: "quests/quest", locals: { campaign: @campaign, quest: @quest, current_user: @current_user }
+      end
     else
-      @errors = @quest.errors.full_messages
-      flash.now[:danger] = "Something's wrong with your quest!"
-      render 'new'
+      if @quest.save
+        @campaign.quests << @quest
+        flash[:success] = "You've added a new quest! Add some more or gear up and get out there!"
+        redirect_to @campaign
+      else
+        @errors = @quest.errors.full_messages
+        flash.now[:danger] = "Something's wrong with your quest!"
+        render 'new'
+      end
     end
   end
 
