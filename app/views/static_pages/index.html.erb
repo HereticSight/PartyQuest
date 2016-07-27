@@ -11,7 +11,7 @@
     <br>
     <div class="col-md-6">
       <div>
-        <a href="#whatIsPartyQuest" class="btn btn-primary collapsed" role="button" data-toggle="collapse" aria-expanded="false" aria-controls="whatIsPartyQuest">What is Party Quest?</a>
+        <a href="#whatIsPartyQuest" id='toggleButton' class="btn btn-primary collapsed" role="button" data-toggle="collapse" aria-expanded="false" aria-controls="whatIsPartyQuest">What is Party Quest?</a>
       </div>
       <div class="collapse" id="whatIsPartyQuest" aria-expanded="false" style="height: 0px;">
         <div class="well">
@@ -23,14 +23,14 @@
       <br>
       <% if @campaigns %>
         <div>
-          <a href="#recentQuests" class="btn btn-primary collapsed" role="button" data-toggle="collapse" aria-expanded="false" aria-controls="recentQuests">Recent Quests</a>
+          <a href="#recentQuests" id='toggleButton' class="btn btn-primary collapsed" role="button" data-toggle="collapse" aria-expanded="false" aria-controls="recentQuests">Recent Campaigns</a>
         </div>
         <div class="collapse" id="recentQuests" aria-expanded="false" style="height: 0px;">
           <div class="well">
-            <h2>Recent Campaigns</h2>
+            <!-- <h2>Recent Campaigns</h2> -->
             <ul class="list-group">
               <% @campaigns.each do |campaign| %>
-                <li>
+                <li class='list-group-item'>
                   <%= link_to campaign.name, campaign %><br>
                   <%= link_to campaign.leader.username, campaign.leader %><br>
                   <%= link_to campaign.location.address, '#', class: 'info_link' if campaign.location %>
@@ -38,6 +38,18 @@
               <% end %>
             </ul>
           </div>
+<!-- =======
+          <h2>Recent Campaigns</h2>
+          <ul class="list-group">
+            <% @campaigns.each do |campaign| %>
+              <li class="list-group-item">
+                <%= link_to campaign.name, campaign %><br>
+                <%= link_to campaign.leader.username, campaign.leader %><br>
+                <%= link_to campaign.location.address, '#', class: 'info_link' if campaign.location %>
+              </li>
+            <% end %>
+          </ul>
+>>>>>>> Update style for list items -->
         </div>
       <% end %>
     </div>
