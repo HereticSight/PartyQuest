@@ -6,8 +6,8 @@
 // Aquamarine: color: #02C8A7
 
 body {
-  font-family: Times;
-  font-size: 150%;
+  font-family: Papyrus, fantasy;
+  font-size: 165%;
   color: #F2ECD6;
   // -webkit-text-stroke-width: .1px;
   // -webkit-text-stroke-color: white;
@@ -166,4 +166,22 @@ a {
 .form-holder {
   width: 80%;
   margin: 0px auto;
+}
+
+@media screen and (min-width: 300px) and (max-width: 700px) {
+  div.row {
+    font-size: 200%;
+  //   margin-left: 2%;
+  }
+
+  li {
+    margin-left: 5%;
+  }
+  // #index_map {
+  //   margin-left: 0%;
+  // }
+
+  li.list-group-item {
+    margin-left: 0%;
+  }
 }
