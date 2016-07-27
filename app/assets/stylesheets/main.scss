@@ -6,7 +6,7 @@
 // Aquamarine: color: #02C8A7
 
 body {
-  font-family: Papyrus, fantasy;
+  font-family: "Big Caslon", "Book Antiqua", "Palatino Linotype", Georgia, serif;
   font-size: 165%;
   color: #F2ECD6;
   // -webkit-text-stroke-width: .1px;
@@ -168,7 +168,7 @@ a {
   margin: 0px auto;
 }
 
-@media screen and (min-width: 300px) and (max-width: 700px) {
+@media screen only and (min-width: 300px) and (max-width: 700px) {
   div.row {
     font-size: 200%;
   //   margin-left: 2%;
