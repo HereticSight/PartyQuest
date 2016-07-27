@@ -24,10 +24,6 @@ body {
   }
 }
 
-#toggleButton {
-  width: 100%;
-}
-
 .darken {
   background-image:
     linear-gradient(
@@ -47,6 +43,33 @@ body {
     background-color: #715420;
   }
 }
+
+#bio {
+  word-wrap: break-word;
+}
+
+a#toggleButton {
+  width: 100%;
+  color: #D8BF8A;
+  background-color: #8D7648;
+  &:hover, &:focus, &:active {
+    color: #dca441;
+    background-color: #715420;
+  }
+}
+
+#start-quest, #search-btn, #add-location, #find-on-map, #log-in {
+  color: #D8BF8A;
+  background-color: #8D7648;
+  &:hover, &:focus, &:active {
+    color: #dca441;
+    background-color: #715420;
+  }
+}
+
+ #add-location, #find-on-map {
+   width: 150px;
+ }
 
 .navbar-toggle {
   border: none;
@@ -102,6 +125,8 @@ body {
     }
     .open {
       a {
+        background-color: #D8BF8A;
+        color: #715420;
         &:focus, &:hover, &:active {
         background-color: #D8BF8A;
         color: #715420;
@@ -156,13 +181,8 @@ a {
 }
 
 .card {
-  padding: 5px;
+  padding: 15px;
   margin: 10px auto;
-}
-
-.card-block {
-  width: 80%;
-  margin: 0px auto;
 }
 
 .form-holder {
@@ -172,6 +192,7 @@ a {
 
 .list-group-item {
   background-color: rgba(216, 191, 138, 0.74);
+  word-wrap: break-word;
 }
 
 .panel-group {

@@ -12,11 +12,12 @@
     <small class="text-muted">You can also enter IP. Your IP is <%= request.ip %></small>
   </fieldset>
   <fieldset class="form-group">
-    <a href="#" id="find-on-map" class="btn btn-info btn-sm">Find on the map</a>
+    <a href="#" id="find-on-map" class="btn btn-primary">Find on the map</a>
   </fieldset>
 
-    <%= f.submit 'Add Location.', class: 'btn btn-primary' %>
+    <%= f.submit 'Add Location', id: 'add-location', class: 'btn btn-primary' %>
 <% end %>
+
 <div class="card">
   <div class="card-block">
     <div id="new_map"></div>
