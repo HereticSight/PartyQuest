@@ -5,5 +5,6 @@ class SearchesController < ApplicationController
       @location_campaigns = search.location_campaigns
       @users = search.users
       render 'show'
+
   end
 end

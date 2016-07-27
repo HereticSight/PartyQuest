@@ -52,10 +52,8 @@ class Search
     @search.each do |word|
       locations = PgSearch.multisearch(term).where(:searchable_type => "Location")
       locations.each do |location|
-          matching_location = Location.find_by(id: location.searchable_id)
           @location_campaigns << Campaign.find_by(location_id: matching_location.searchable_id)
       end
     end
   end
-
 end
