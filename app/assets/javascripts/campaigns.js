@@ -14,7 +14,6 @@ $(document).ready(function() {
   $(".quest-holder").submit(function(e) {
     var target = e.target;
     e.preventDefault();
-    
     $.ajax({
       url: $(target).attr("action"),
       method: "post",
