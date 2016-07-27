@@ -12,7 +12,7 @@ class CampaignsController < ApplicationController
       if @campaign.location == nil
         if logged_in?
           redirect_to new_campaign_location_url(@campaign)
-          flash[:danger] = "Add a location to your campaign first"
+          flash[:danger] = "This campaign is not accessible yet."
         else
           login_redirect
         end
