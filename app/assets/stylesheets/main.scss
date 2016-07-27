@@ -1,9 +1,7 @@
 // THIS IS THE COLOR SCHEME
 // USE ONLY THESE COLORS
-// Sky: color: #87CEFA
-// Bright Coral: color: #F53240
-// Golden: color: #F9BE02
-// Aquamarine: color: #02C8A7
+// Text and links: #F2ECD6
+// Background for nav bars and w
 
 body {
   font-family: "Big Caslon", "Book Antiqua", "Palatino Linotype", Georgia, serif;
@@ -15,6 +13,22 @@ body {
 
 .well {
   background: rgba(242, 236, 214, 0.5);
+  width: 95%;
+}
+
+#recentQuests {
+  .well {
+    background: rgba(0,0,0, 0.0);
+    border: none;
+    padding: 0px;
+    .list-group-item {
+      width: 100%;
+    }
+  }
+}
+
+#toggleButton {
+  width: 95%;
 }
 
 .darken {
@@ -26,7 +40,6 @@ body {
     image-url('nVripdG.jpg');
     background-size: cover;
     background-attachment: fixed;
-    background-repeat: no-repeat;
 }
 
 .btn {
@@ -35,20 +48,6 @@ body {
   &:hover {
     color: #dca441;
     background-color: #4a3716;
-  }
-}
-
-.panel-default {
-  .panel-heading {
-
-  }
-}
-
-.list-group-item {
-  color: #8D7648;
-  background-color: rgba(216, 191, 138, 0.5);
-  a {
-    color: #8D7648;
   }
 }
 
@@ -142,7 +141,11 @@ body {
 }
 
 a {
-  color: #F1E9D4;
+  color: #F2ECD6;
+  &:hover, &:active, &:focus {
+    color: #675704;
+    text-decoration: none;
+  }
 }
 
 #new_map {
@@ -151,6 +154,7 @@ a {
 
 #index_map {
   height: 400px;
+  width: 100%;
 }
 
 .card {
@@ -166,6 +170,34 @@ a {
 .form-holder {
   width: 80%;
   margin: 0px auto;
+}
+
+.list-group-item {
+  width: 95%;
+  background-color: rgba(216, 191, 138, 0.74);
+}
+
+.panel-group {
+  width: 95%;
+  .panel-heading {
+    color: #8D7648;
+    background-color: #D8BF8A;
+    h4 {
+      font-weight: 600;
+    }
+  }
+  .list-group-item {
+    width: 100%;
+    color: #8D7648;
+    background-color: #D8BF8A;
+    a {
+      color: #8D7648;
+      &:hover, &:active, &:focus {
+        color: #635408;
+        text-decoration: none;
+      }
+    }
+  }
 }
 
 @media screen only and (min-width: 300px) and (max-width: 700px) {
