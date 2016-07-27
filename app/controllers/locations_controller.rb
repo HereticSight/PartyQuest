@@ -14,7 +14,7 @@ class LocationsController < ApplicationController
     if current_user?(@campaign.leader)
       @location = @campaign.build_location
     else
-      redirect_to @campaign
+      redirect_to root_url
     end
   end
 
