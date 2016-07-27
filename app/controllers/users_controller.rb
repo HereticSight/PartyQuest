@@ -36,7 +36,7 @@ class UsersController < ApplicationController
     @user = User.find_by(id: params[:id])
     if !current_user?(@user)
       flash[:danger] = "You do not have access to this profile."
-      redirect_to users_url
+      redirect_to @user
     end
   end
 

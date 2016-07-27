@@ -11,13 +11,17 @@
   <% end %>
   <% unless @location_campaigns.empty? && @campaigns.empty? %>
     <h3 class="category">Related Campaigns</h3>
-      <ul class="list-group">
-        <% @campaigns.each do |campaign| %>
-          <li class="list-group-item"><%= link_to campaign.name, campaign_path(campaign) %></li>
-        <% end %>
-        <% @location_campaigns.each do |location_campaign| %>
-          <li class="list-group-item"><%= link_to location_campaign.name, campaign_path(location_campaign) %></li>
-        <% end %>
+      <% unless @campaigns.empty? %>
+        <ul class="list-group">
+            <% @campaigns.each do |campaign| %>
+              <li class="list-group-item"><%= link_to campaign.name, campaign_path(campaign) %></li>
+            <% end %>
+  <% end %>
+  <% unless @location_campaigns.empty? %>
+      <% @location_campaigns.each do |location_campaign| %>
+        <li class="list-group-item"><%= link_to location_campaign.name, campaign_path(location_campaign) %></li>
+      <% end %>
+    <% end %>
       </ul>
   <% end %>
 <% end %>
