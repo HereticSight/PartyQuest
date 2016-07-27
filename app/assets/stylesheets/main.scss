@@ -3,6 +3,11 @@
 // Text and links: #F2ECD6
 // Background for nav bars and w
 
+html {
+  min-height: 480px;
+  min-width: 320px;
+}
+
 body {
   font-family: "Big Caslon", "Book Antiqua", "Palatino Linotype", Georgia, serif;
   font-size: 165%;
@@ -12,8 +17,7 @@ body {
 }
 
 .well {
-  background: rgba(242, 236, 214, 0.5);
-  width: 95%;
+  background-color: rgba(216, 191, 138, 0.741176);
 }
 
 #recentQuests {
@@ -21,14 +25,7 @@ body {
     background: rgba(0,0,0, 0.0);
     border: none;
     padding: 0px;
-    .list-group-item {
-      width: 100%;
-    }
   }
-}
-
-#toggleButton {
-  width: 95%;
 }
 
 .darken {
@@ -45,11 +42,38 @@ body {
 .btn {
   color: #D8BF8A;
   background-color: #8D7648;
-  &:hover {
+  &:hover, &:focus, &:active {
     color: #dca441;
-    background-color: #4a3716;
+    background-color: #715420;
   }
 }
+
+#bio {
+  word-wrap: break-word;
+}
+
+a#toggleButton {
+  width: 100%;
+  color: #D8BF8A;
+  background-color: #8D7648;
+  &:hover, &:focus, &:active {
+    color: #dca441;
+    background-color: #715420;
+  }
+}
+
+#start-quest, #search-btn, #add-location, #find-on-map, #log-in {
+  color: #D8BF8A;
+  background-color: #8D7648;
+  &:hover, &:focus, &:active {
+    color: #dca441;
+    background-color: #715420;
+  }
+}
+
+ #add-location, #find-on-map {
+   width: 150px;
+ }
 
 .navbar-toggle {
   border: none;
@@ -98,27 +122,30 @@ body {
     li {
       a {
         color: #8D7648;
-      }
-        &:hover {
-          color: #A9010D;
+        &:focus, &:hover, &:active {
+          color: #715420;
         }
-    }
-  }
-  .open {
-    a {
-      &:focus {
-      background-color: #D8BF8A;
-      color: #BA2A1D;
-      }
-      &:hover {
-        color: #BA2A1D;
       }
     }
+    .open {
+      a {
+        background-color: #D8BF8A;
+        color: #715420;
+        &:focus, &:hover, &:active {
+        background-color: #D8BF8A;
+        color: #715420;
+        }
+      }
+      .dropdown {
+        .dropdown-toggle {
+          &:focus, &:hover, &:active, &:visited {
+            background-color: #D8BF8A;
+            color: #715420;
+          }
+        }
+      }
+    }
   }
-}
-
-.navbar-default .navbar-nav > .open > a:focus {
-    background-color: #D8BF8A;
 }
 
 .dropdown-menu {
@@ -130,7 +157,7 @@ body {
   font-size: 2.4em;
   color: #8D7648;
   &:hover {
-    color: #4a3716;
+    color: #715420;
   }
 }
 
@@ -142,7 +169,7 @@ body {
 
 a {
   color: #F2ECD6;
-  &:hover, &:active, &:focus {
+  &:hover, &:active, &:focus, &:hover &:active {
     color: #675704;
     text-decoration: none;
   }
@@ -158,13 +185,8 @@ a {
 }
 
 .card {
-  padding: 5px;
+  padding: 15px;
   margin: 10px auto;
-}
-
-.card-block {
-  width: 80%;
-  margin: 0px auto;
 }
 
 .form-holder {
@@ -173,12 +195,11 @@ a {
 }
 
 .list-group-item {
-  width: 95%;
   background-color: rgba(216, 191, 138, 0.74);
+  word-wrap: break-word;
 }
 
 .panel-group {
-  width: 95%;
   .panel-heading {
     color: #8D7648;
     background-color: #D8BF8A;
@@ -187,7 +208,6 @@ a {
     }
   }
   .list-group-item {
-    width: 100%;
     color: #8D7648;
     background-color: #D8BF8A;
     a {
@@ -200,20 +220,17 @@ a {
   }
 }
 
-@media screen only and (min-width: 300px) and (max-width: 700px) {
+@media (max-width: 767px) {
   div.row {
     font-size: 200%;
-  //   margin-left: 2%;
   }
-
-  li {
-    margin-left: 5%;
+  .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+    color: #8D7648;
   }
-  // #index_map {
-  //   margin-left: 0%;
-  // }
+}
 
-  li.list-group-item {
-    margin-left: 0%;
+@media (max-width: 300px) {
+  div.row {
+    font-size: 300%;
   }
 }

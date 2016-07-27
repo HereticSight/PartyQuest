@@ -1,19 +1,20 @@
 <h1><%= @user.username %></h1>
-  <div class="container">
+  <div class="container-fluid">
     <div class="row">
       <div class="col-md-4">
         <%= @user.first_name %> <%= @user.last_name %><br>
         <%= image_tag @user.avatar.url(:square) %>
       </div>
       <div class="col-md-6">
-        <br><strong>Contact:</strong> <%= @user.email %><br>
-        <strong>Bio:</strong> <%= @user.bio %><br>
-        <strong>City:</strong> <%= @user.city %><br>
+        <br>
+        <p><strong>Contact:</strong> <%= @user.email %></p>
+        <p><strong>City:</strong> <%= @user.city %></p>
+        <p id="bio"><strong>Bio:</strong> <%= @user.bio %></p>
       </div>
     </div>
   </div>
 <br>
-  <div class="container">
+  <div class="container-fluid">
     <div class="row">
       <div class="col-md-6">
         <div class="panel-group" role="tablist">
@@ -60,12 +61,13 @@
       </div>
     </div>
   </div>
+</div>
 
-  <p>
-    <% if current_user?(@user) %>
-      <%= link_to "Edit your profile", edit_user_path(@user) %>
-      <%= link_to "Delete your profile", user_path(@user),
-          method: :delete,
-          data: { confirm: "Are you sure you want to delete your profile?" } %>
-    <% end %>
-  </p>
+<p>
+  <% if current_user?(@user) %>
+    <%= link_to "Edit your profile", edit_user_path(@user) %>
+    <%= link_to "Delete your profile", user_path(@user),
+        method: :delete,
+        data: { confirm: "Are you sure you want to delete your profile?" } %>
+  <% end %>
+</p>
