@@ -3,11 +3,15 @@
 // Text and links: #F2ECD6
 // Background for nav bars and w
 
+html {
+  min-height: 480px;
+  min-width: 320px;
+}
+
 body {
   font-family: "Big Caslon", "Book Antiqua", "Palatino Linotype", Georgia, serif;
   font-size: 165%;
   color: #F2ECD6;
-  min-width: 300px;
   // -webkit-text-stroke-width: .1px;
   // -webkit-text-stroke-color: white;
 }
@@ -216,20 +220,17 @@ a {
   }
 }
 
-@media screen only and (min-width: 300px) and (max-width: 767px) {
+@media (max-width: 767px) {
   div.row {
     font-size: 200%;
-  //   margin-left: 2%;
   }
-
-  li {
-    margin-left: 5%;
+  .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+    color: #8D7648;
   }
-  // #index_map {
-  //   margin-left: 0%;
-  // }
+}
 
-  li.list-group-item {
-    margin-left: 0%;
+@media (max-width: 300px) {
+  div.row {
+    font-size: 300%;
   }
 }
