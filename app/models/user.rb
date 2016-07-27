@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
     square: '200x200#',
     medium: '300x300>'},
     size: { in: 0..5000.kilobytes },
-    :default_url => ActionController::Base.helpers.asset_path('default.png')
+    :default_url => '/images/defaults/default_avatar.png'
   validates_attachment_content_type :avatar, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
   email_regex = /\A[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,63}\z/i
