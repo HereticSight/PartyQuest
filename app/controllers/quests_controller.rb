@@ -1,8 +1,13 @@
 class QuestsController < ApplicationController
   def new
-    @campaign = Campaign.find_by(id: params[:campaign_id]) || not_found
-    redirect_to @campaign unless @campaign.leader == @current_user
-    @quest = Quest.new
+    @campaign = Campaign.find_by(id: params[:campaign_id])
+    if @campaign == nil
+      redirect_to root_url
+      flash[:danger] = "This campaign doesn't exist!"
+    else
+      redirect_to @campaign unless @campaign.leader == @current_user
+      @quest = Quest.new
+    end
     login_redirect
   end
 

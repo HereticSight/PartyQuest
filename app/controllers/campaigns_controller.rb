@@ -3,18 +3,23 @@ class CampaignsController < ApplicationController
   before_action :set_campaign, only: [:show, :update, :edit, :destroy]
 
   def show
-    @campaign = Campaign.find_by(id: params[:id]) || not_found
-    @quests = @campaign.quests
-    if @campaign.location == nil
-      if logged_in?
-        redirect_to new_campaign_location_url(@campaign)
-        flash[:danger] = "Add a location to your campaign first"
-      else
-        login_redirect
+    @campaign = Campaign.find_by(id: params[:id])
+    if @campaign == nil
+      redirect_to root_url
+      flash[:danger] = "That campaign doesn't exist!"
+    else
+      @quests = @campaign.quests
+      if @campaign.location == nil
+        if logged_in?
+          redirect_to new_campaign_location_url(@campaign)
+          flash[:danger] = "Add a location to your campaign first"
+        else
+          login_redirect
+        end
       end
+      @link = invite_url
+      @members = @campaign.users
     end
-    @link = invite_url
-    @members = @campaign.users
   end
 
   def new
@@ -54,7 +59,7 @@ class CampaignsController < ApplicationController
   end
 
   def edit
-    if !current_user?(@campaign.leader)
+    if @campaign == nil || !current_user?(@campaign.leader)
       flash[:danger] = "You do not have access to this campaign."
       redirect_to root_url
     end
