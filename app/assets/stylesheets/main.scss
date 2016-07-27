@@ -7,13 +7,13 @@ body {
   font-family: "Big Caslon", "Book Antiqua", "Palatino Linotype", Georgia, serif;
   font-size: 165%;
   color: #F2ECD6;
+  min-width: 300px;
   // -webkit-text-stroke-width: .1px;
   // -webkit-text-stroke-color: white;
 }
 
 .well {
-  background: rgba(242, 236, 214, 0.5);
-  width: 95%;
+  background-color: rgba(216, 191, 138, 0.741176);
 }
 
 #recentQuests {
@@ -21,14 +21,11 @@ body {
     background: rgba(0,0,0, 0.0);
     border: none;
     padding: 0px;
-    .list-group-item {
-      width: 100%;
-    }
   }
 }
 
 #toggleButton {
-  width: 95%;
+  width: 100%;
 }
 
 .darken {
@@ -45,9 +42,9 @@ body {
 .btn {
   color: #D8BF8A;
   background-color: #8D7648;
-  &:hover {
+  &:hover, &:focus, &:active {
     color: #dca441;
-    background-color: #4a3716;
+    background-color: #715420;
   }
 }
 
@@ -98,27 +95,28 @@ body {
     li {
       a {
         color: #8D7648;
-      }
-        &:hover {
-          color: #A9010D;
+        &:focus, &:hover, &:active {
+          color: #715420;
         }
-    }
-  }
-  .open {
-    a {
-      &:focus {
-      background-color: #D8BF8A;
-      color: #BA2A1D;
-      }
-      &:hover {
-        color: #BA2A1D;
       }
     }
+    .open {
+      a {
+        &:focus, &:hover, &:active {
+        background-color: #D8BF8A;
+        color: #715420;
+        }
+      }
+      .dropdown {
+        .dropdown-toggle {
+          &:focus, &:hover, &:active, &:visited {
+            background-color: #D8BF8A;
+            color: #715420;
+          }
+        }
+      }
+    }
   }
-}
-
-.navbar-default .navbar-nav > .open > a:focus {
-    background-color: #D8BF8A;
 }
 
 .dropdown-menu {
@@ -130,7 +128,7 @@ body {
   font-size: 2.4em;
   color: #8D7648;
   &:hover {
-    color: #4a3716;
+    color: #715420;
   }
 }
 
@@ -142,7 +140,7 @@ body {
 
 a {
   color: #F2ECD6;
-  &:hover, &:active, &:focus {
+  &:hover, &:active, &:focus, &:hover &:active {
     color: #675704;
     text-decoration: none;
   }
@@ -173,12 +171,10 @@ a {
 }
 
 .list-group-item {
-  width: 95%;
   background-color: rgba(216, 191, 138, 0.74);
 }
 
 .panel-group {
-  width: 95%;
   .panel-heading {
     color: #8D7648;
     background-color: #D8BF8A;
@@ -187,7 +183,6 @@ a {
     }
   }
   .list-group-item {
-    width: 100%;
     color: #8D7648;
     background-color: #D8BF8A;
     a {
@@ -200,7 +195,7 @@ a {
   }
 }
 
-@media screen only and (min-width: 300px) and (max-width: 700px) {
+@media screen only and (min-width: 300px) and (max-width: 767px) {
   div.row {
     font-size: 200%;
   //   margin-left: 2%;
