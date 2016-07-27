@@ -22,7 +22,8 @@ $(document).ready(function() {
     })
     .done(function(response) {
       target.remove();
-      $(".quest-list").append(response)
+      $(".quest-list").append(response);
+      $("a.add-quest").toggle();
     })
   })
 });
