@@ -8,6 +8,7 @@
       <div id="index_map">
       </div>
     </div>
+    <br>
     <div class="col-md-6">
       <div>
         <a href="#whatIsPartyQuest" class="btn btn-primary collapsed" role="button" data-toggle="collapse" aria-expanded="false" aria-controls="whatIsPartyQuest">What is Party Quest?</a>
@@ -19,22 +20,28 @@
           </p>
         </div>
       </div>
+      <br>
       <% if @campaigns %>
         <div>
-          <h2>Recent Campaigns</h2>
-          <ul class="list-group">
-            <% @campaigns.each do |campaign| %>
-              <li>
-                <%= link_to campaign.name, campaign %><br>
-                <%= link_to campaign.leader.username, campaign.leader %><br>
-                <%= link_to campaign.location.address, '#', class: 'info_link' if campaign.location %>
-              </li>
-            <% end %>
-          </ul>
+          <a href="#recentQuests" class="btn btn-primary collapsed" role="button" data-toggle="collapse" aria-expanded="false" aria-controls="recentQuests">Recent Quests</a>
+        </div>
+        <div class="collapse" id="recentQuests" aria-expanded="false" style="height: 0px;">
+          <div class="well">
+            <h2>Recent Campaigns</h2>
+            <ul class="list-group">
+              <% @campaigns.each do |campaign| %>
+                <li>
+                  <%= link_to campaign.name, campaign %><br>
+                  <%= link_to campaign.leader.username, campaign.leader %><br>
+                  <%= link_to campaign.location.address, '#', class: 'info_link' if campaign.location %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
         </div>
       <% end %>
     </div>
   </div>
 </div>
-
+<br>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZdeZHwH56fPgr1Ray067LcQi1U9SXzTs&callback=initIndexMap&libraries=places" async defer></script>
