@@ -30,7 +30,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-6">
-      <h2>Pictures</h2>
+      <h2><%= @campaign.pictures.count %> <%= "Picture".pluralize(@campaign.pictures.count)%></h2>
         <% if current_user?(@campaign.leader) || @campaign.users.include?(@current_user)%>
           <%= link_to "Add a picture to this campaign!", new_campaign_picture_path(@campaign) %>
         <% end %>
@@ -78,7 +78,7 @@
         <% end %>
     </div>
     <div class="col-md-6">
-      <h2>Members</h2>
+      <h2><%= @members.count %> <%= "Member".pluralize(@members.count)%></h2>
         <% unless @members.empty? %>
           <div id='user-carousel-custom' class='carousel slide' data-ride='carousel'>
             <div class='carousel-outer'>
@@ -90,12 +90,12 @@
                         <div class="image-link">
                           <%= link_to member.username, user_path(member) %>
                         </div>
-                        <img src="<%= member.avatar %>" alt="avatar" />
+                        <img src="<%= member.avatar.url(:square) %>" alt="avatar" />
                       </div>
                     <% else %>
                       <div class="item">
                         <%= link_to member.username, user_path(member) %>
-                        <img src="<%= member.avatar %>" alt="avatar" />
+                        <img src="<%= member.avatar.url(:square) %>" alt="avatar" />
                       </div>
                     <% end %>
                   <% end %>
