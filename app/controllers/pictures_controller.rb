@@ -1,7 +1,7 @@
 class PicturesController < ApplicationController
   def new
     @campaign = Campaign.find_by(id: params[:campaign_id]) || not_found
-    redirect_to @campaign unless @campaign.leader == @current_user
+    redirect_to @campaign unless @campaign.leader == @current_user || @campaign.users.include?(@current_user)
     @picture = Picture.new
     login_redirect
   end
@@ -9,7 +9,7 @@ class PicturesController < ApplicationController
   def create
     login_redirect
     @campaign = Campaign.find_by(id: params[:campaign_id])
-    redirect_to @campaign unless @campaign.leader == @current_user
+    redirect_to @campaign unless @campaign.leader == @current_user || @campaign.users.include?(@current_user)
     @picture = @campaign.pictures.build(picture_params)
     if @picture.save
       @campaign.pictures << @picture
