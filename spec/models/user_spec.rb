@@ -13,6 +13,20 @@ RSpec.describe User, type: :model do
              avatar_file_size: 2458
              )}
 
+    let (:campaign) { Campaign.new(
+                  name:"Food",
+                  leader_id:1,
+                  invite_link: "AF2C0jhFsIEDAZMJ1AKPxQ",
+                  start_time:"Mon, 04 Apr 44444 04:44:00 UTC +00:00",
+                  end_time: "Thu, 05 May 55555 05:55:00 UTC +00:00",
+                  location_id: 1)}
+
+    let (:quest) { Quest.new(
+                  name:"Eat 8 Jalapeno poppers",
+                  description:"Down those poppers",
+                  price_range:2,
+                  )}
+
   context "#initialize" do
     it 'creates a User object' do
       expect(user).to be_an_instance_of User
@@ -53,6 +67,20 @@ RSpec.describe User, type: :model do
     it "has a avatar" do
       expect(user.avatar).to be_truthy
     end
+  end
+
+  it "has many users" do
+    user.campaigns << campaign
+    user.save
+    expect(user.campaigns).to include(campaign)
+  end
+
+  it "has many quests" do
+    user.campaigns << campaign
+    user.save
+    user.campaigns.first.quests << quest
+    user.save
+    expect(user.quests).to include(quest)
   end
 
 end

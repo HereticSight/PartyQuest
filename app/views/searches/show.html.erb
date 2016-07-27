@@ -1,4 +1,4 @@
-<% if @users.empty? && @campaigns.empty? && @location_campaigns.empty? %>
+<% if @users.empty? && @campaigns.empty? %>
  <h2>Sorry, your search returned no results</h2>
 <% else %>
   <% unless @users.empty? %>
@@ -9,19 +9,14 @@
         <% end %>
       </ul>
   <% end %>
-  <% unless @location_campaigns.empty? && @campaigns.empty? %>
+  <% unless @campaigns.empty? %>
     <h3 class="category">Related Campaigns</h3>
       <% unless @campaigns.empty? %>
         <ul class="list-group">
             <% @campaigns.each do |campaign| %>
               <li class="list-group-item"><%= link_to campaign.name, campaign_path(campaign) %></li>
             <% end %>
-  <% end %>
-  <% unless @location_campaigns.empty? %>
-      <% @location_campaigns.each do |location_campaign| %>
-        <li class="list-group-item"><%= link_to location_campaign.name, campaign_path(location_campaign) %></li>
+        </ul>
       <% end %>
-    <% end %>
-      </ul>
   <% end %>
 <% end %>

@@ -5,7 +5,6 @@ class Search
     @search = args.split("/\s+/")
     @users = []
     @campaigns = []
-    @location_campaigns = []
 
     user_results = PgSearch.multisearch(args).where(:searchable_type => "User")
     campaign_results = PgSearch.multisearch(args).where(:searchable_type => "Campaign")
@@ -20,7 +19,7 @@ class Search
     end
 
     location_results.each do |location|
-      @location_campaigns << Campaign.find_by(location_id: location.searchable_id)
+      @campaigns << Campaign.find_by(location_id: location.searchable_id)
     end
 
     if @search.length > 1
@@ -53,7 +52,7 @@ class Search
       locations = PgSearch.multisearch(term).where(:searchable_type => "Location")
       locations.each do |location|
           matching_location = Location.find_by(id: location.searchable_id)
-          @location_campaigns << Campaign.find_by(location_id: matching_location.searchable_id)
+          @campaigns << Campaign.find_by(location_id: matching_location.searchable_id)
       end
     end
   end
