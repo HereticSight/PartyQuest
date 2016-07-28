@@ -16,7 +16,7 @@ class Campaign < ActiveRecord::Base
   validate :end_date_after_start_date
 
   def start_date_in_future
-    if start_time.present? && start_time < DateTime.now
+    if start_time.present? && start_time < DateTime.now - (4/24.0)
       errors.add(:start_time, "Don't live in the past! Campaigns can only be started in the future!")
     end
   end
