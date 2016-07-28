@@ -119,7 +119,7 @@
   <div class="row">
     <div class="col-md-6">
       <h2>Quests</h2>
-        <ul class='list-group'>
+        <ul class='list-group quest-list'>
           <% @quests.each do |quest| %>
            <li class='list-group-item'>
               Quest: <%= quest.name %><br>
@@ -138,7 +138,9 @@
          <% end %>
         </ul>
         <% if current_user?(@campaign.leader) %>
-          <%= link_to "Add a quest to this campaign!", new_campaign_quest_path(@campaign) %>
+          <div class="quest-holder">
+            <%= link_to "Add a quest to this campaign!", new_campaign_quest_path(@campaign), class: "add-quest" %>
+          </div>
         <% end %>
     </div>
     <div class="col-md-6">
@@ -155,8 +157,3 @@
     </div>
   </div>
 </div>
-
-<br>
-<br>
-<br>
-<br>

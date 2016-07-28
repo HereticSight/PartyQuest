@@ -41,7 +41,7 @@
     <type label="Inet CIDR Addr" length="0" sql="CIDR" quote="'"/>
     <type label="Geometry" length="0" sql="GEOMETRY" quote="'"/>
   </group>
-</datatypes><table x="553" y="460" name="locations">
+</datatypes><table x="546" y="494" name="locations">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -64,7 +64,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="748" y="383" name="quests">
+<table x="804" y="339" name="quests">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -81,7 +81,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="387" y="296" name="Campaign">
+<table x="322" y="363" name="Campaign">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -109,7 +109,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="192" y="369" name="campaigns_users">
+<table x="222" y="212" name="campaigns_users">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -125,7 +125,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="28" y="253" name="users">
+<table x="156" y="360" name="users">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -154,7 +154,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="543" y="315" name="campaigns_quests">
+<table x="530" y="318" name="campaigns_quests">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
