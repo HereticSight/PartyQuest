@@ -19,7 +19,8 @@ class Search
     end
 
     location_results.each do |location|
-      @campaigns << Campaign.find_by(location_id: location.searchable_id)
+      found_campaign = Campaign.find_by(location_id: location.searchable_id)
+      @campaigns << found_campaign unless @campaigns.include?(found_campaign)
     end
 
     if @search.length > 1
@@ -52,7 +53,8 @@ class Search
       locations = PgSearch.multisearch(term).where(:searchable_type => "Location")
       locations.each do |location|
           matching_location = Location.find_by(id: location.searchable_id)
-          @campaigns << Campaign.find_by(location_id: matching_location.searchable_id)
+          found_campaign = Campaign.find_by(location_id: matching_location.searchable_id)
+          @campaigns << found_campaign unless @campaigns.include?(found_campaign)
       end
     end
   end
