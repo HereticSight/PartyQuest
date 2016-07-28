@@ -27,7 +27,6 @@
         </div>
         <div class="collapse" id="recentQuests" aria-expanded="false" style="height: 0px;">
           <div class="well">
-            <!-- <h2>Recent Campaigns</h2> -->
             <ul class="list-group">
               <% @campaigns.each do |campaign| %>
                 <li class='list-group-item'>
@@ -38,18 +37,6 @@
               <% end %>
             </ul>
           </div>
-<!-- =======
-          <h2>Recent Campaigns</h2>
-          <ul class="list-group">
-            <% @campaigns.each do |campaign| %>
-              <li class="list-group-item">
-                <%= link_to campaign.name, campaign %><br>
-                <%= link_to campaign.leader.username, campaign.leader %><br>
-                <%= link_to campaign.location.address, '#', class: 'info_link' if campaign.location %>
-              </li>
-            <% end %>
-          </ul>
->>>>>>> Update style for list items -->
         </div>
       <% end %>
     </div>
